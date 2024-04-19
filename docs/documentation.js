@@ -27,7 +27,7 @@ function interhaptics_quit() {}
 
 /**
  * @func interhaptics_add_hm
- * @desc This function adds the content of an .haps file to the Interhaptics Engine for future use. It returns a reference to the new haptics file contents to be used in other functions.
+ * @desc This function adds the content of an .haps file to the Interhaptics Engine for future use. It returns a reference to the new haptic effect to be used in other functions.
  * @param {string} content The JSON content of the .haps file to be loaded. This needs to follow the Interhaptics .haps format.
  * @returns {real}
  * @func_end
@@ -231,7 +231,7 @@ function interhaptics_provider_render_haptics() {}
  *
  * <br />
  *
- * The GroupID enum represents the group IDs for different body parts. Each group has a unique ID assigned to it for grouping purposes. The following are some of the groups and their corresponding IDs
+ * The GroupID enum represents the group IDs for different body parts. Each group has a unique ID assigned to it for grouping purposes. The following are some of the groups and their corresponding IDs:
  * @member Unknown Represents an unknown group. ID -1
  * @member All Represents all body parts. ID 0
  * @member Top Represents the top portion of the body. ID 100
@@ -287,7 +287,17 @@ function interhaptics_provider_render_haptics() {}
   * @title Home
   * @desc This is the Interhaptics extension for GameMaker, which allows you to add haptic feedback to your GameMaker games.
   * 
-  * Interhaptics is a software that allows you to design, test, and play haptic effects. 
+  * Interhaptics is a software that allows you to design, test, and play haptic effects.
+  * 
+  * To create your own haptic effects for use with Interhaptics you can use the [Haptic Composer](www.interhaptics.com/doc/haptic-composer) tool, which includes an [Audio to Haptic](https://www.interhaptics.com/doc/haptic-composer/#audio-to-haptics-settings) feature to generate a haptic effect from audio.
+  * 
+  * [[Note: This extension is only supported on Windows.]]
+  * 
+  * @section Guides
+  * @desc These are the guides for the Interhaptics extension: 
+  * @ref page.setup
+  * @ref page.basic_use
+  * @section_end
   * 
   * @section Modules
   * @desc These are the modules of the Interhaptics extension. Each module links to the corresponding section of the Interhaptics documentation where possible.
