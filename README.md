@@ -6,15 +6,13 @@ This repository was created with the intent of presenting users with the latest 
 
 This extension will work on Windows.
 
+* Source: `source/Interhaptics_gml/extensions/Interhaptics/interhaptics_cpp/`
+* Windows: `source/steamworks_gml/extensions/steamworks/interhaptics_windows/`
+
 > [!NOTE]
 > More platforms will be available at a later stage.
 
-SOURCE CODE: `source/Interhaptics_gml/extensions/Interhaptics/interhaptics_cpp/`
-
-WINDOWS SOLUTION: `source/steamworks_gml/extensions/steamworks/interhaptics_windows/`
-
-> [!TIP]
-> After compilation the exported dll/dylib/so file is automatically copied into the extension folder inside the included GameMaker project folder.
+After compilation the exported dll/dylib/so file is automatically copied into the extension folder inside the included GameMaker project folder.
 
 ---
 
