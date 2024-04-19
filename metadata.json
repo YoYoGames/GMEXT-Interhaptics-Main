@@ -1,11 +1,11 @@
 {
     "gitHubUrl": "https://github.com/YoYoGames/GMEXT-Interhaptics",
-    "projectFile": "interhaptics.yyp",
+    "projectFile": "source/interhaptics_gml/interhaptics.yyp",
     "projectVersion": "LTS22",
     "releaseTemplate": "templates/release_body.md",
     "extensionMetaData": [
         {
-            "extensionFile": "extensions/Interhaptics/Interhaptics.yy",
+            "extensionFile": "source/interhaptics_gml/extensions/Interhaptics/Interhaptics.yy",
             "packageId": "com.yoyogames.interhapticsext",
             "packageName": "Interhaptics Ext",
             "packageVersion": "0.0.1",

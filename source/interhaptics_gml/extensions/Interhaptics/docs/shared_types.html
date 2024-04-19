@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Shared Types - GMEXT-Interhaptics</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Shared Types";
+        var mkdocs_page_input_path = "shared_types.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-Interhaptics
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Interhaptics Extension</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="engine_control.html">Engine Control</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="engine_events.html">Engine Events</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="providers.html">Providers</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="shared_types.html">Shared Types</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structs">Structs</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-Interhaptics</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Shared Types</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-Interhaptics/edit/master/docs/shared_types.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="shared-types"><strong>Shared Types</strong></h1>
+<p><strong>Interhaptics Docs Section:</strong> <a href="https://www.interhaptics.com/doc/interhaptics-engine/#shared-types">Shared Types</a></p>
+<p><br /></p>
+<p>This module contains the constants and structs related to shared types.</p>
+<h2 id="constants">Constants</h2>
+<p>The following are the constants that the Interhaptics extension defines. All of them are defined as an enum.</p>
+<ul>
+<li><a href="shared_types.html#interhaptics_operator">Interhaptics_Operator</a></li>
+<li><a href="shared_types.html#interhaptics_lateralflag">Interhaptics_LateralFlag</a></li>
+<li><a href="shared_types.html#interhaptics_groupid">Interhaptics_GroupID</a></li>
+</ul>
+<h2 id="structs">Structs</h2>
+<p>The Interhaptics extension also defines a <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a>:</p>
+<ul>
+<li><a href="shared_types.html#interhaptics_commanddata">Interhaptics_CommandData</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="interhaptics_operator">Interhaptics_Operator</h1>
+<blockquote>
+<p><strong>Interhaptics Constant</strong> <a href="https://www.interhaptics.com/doc/interhaptics-engine/#operator">Interhaptics_Operator</a></p>
+</blockquote>
+<p><br /></p>
+<p>This enum represents operators used in the haptic body mapping. The possible values are:</p>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Minus</code></td>
+<td>Represents a minus operator (-1)</td>
+</tr>
+<tr>
+<td><code>Neutral</code></td>
+<td>Represents a neutral operator (0)</td>
+</tr>
+<tr>
+<td><code>Plus</code></td>
+<td>Represents a plus operator (1)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="interhaptics_lateralflag">Interhaptics_LateralFlag</h1>
+<blockquote>
+<p><strong>Interhaptics Constant</strong> <a href="https://www.interhaptics.com/doc/interhaptics-engine/#lateralflag">Interhaptics_LateralFlag</a></p>
+</blockquote>
+<p><br /></p>
+<p>This enum represents the lateral position of a body part. The possible values are:</p>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UnknownPosition</code></td>
+<td>Represents an unknown position. (-1)</td>
+</tr>
+<tr>
+<td><code>Global</code></td>
+<td>Represents the global position. (0)</td>
+</tr>
+<tr>
+<td><code>Right</code></td>
+<td>Represents the right position. (1)</td>
+</tr>
+<tr>
+<td><code>Left</code></td>
+<td>Represents the left position. (2)</td>
+</tr>
+<tr>
+<td><code>Center</code></td>
+<td>Represents the center position. (3)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="interhaptics_groupid">Interhaptics_GroupID</h1>
+<blockquote>
+<p><strong>Interhaptics Constant</strong> <a href="https://www.interhaptics.com/doc/interhaptics-engine/#groupid">Interhaptics_GroupID</a></p>
+</blockquote>
+<p><br /></p>
+<p>The GroupID enum represents the group IDs for different body parts. Each group has a unique ID assigned to it for grouping purposes. The following are some of the groups and their corresponding IDs</p>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Unknown</code></td>
+<td>Represents an unknown group. ID -1</td>
+</tr>
+<tr>
+<td><code>All</code></td>
+<td>Represents all body parts. ID 0</td>
+</tr>
+<tr>
+<td><code>Top</code></td>
+<td>Represents the top portion of the body. ID 100</td>
+</tr>
+<tr>
+<td><code>Down</code></td>
+<td>Represents the lower portion of the body. ID 101</td>
+</tr>
+<tr>
+<td><code>Arm</code></td>
+<td>Represents the arm group. ID 200</td>
+</tr>
+<tr>
+<td><code>Head</code></td>
+<td>Represents the head group. ID 201</td>
+</tr>
+<tr>
+<td><code>Chest</code></td>
+<td>Represents the chest group. ID 202</td>
+</tr>
+<tr>
+<td><code>Waist</code></td>
+<td>Represents the waist group. ID 203</td>
+</tr>
+<tr>
+<td><code>Leg</code></td>
+<td>Represents the leg group. ID 204</td>
+</tr>
+<tr>
+<td><code>Upper_arm</code></td>
+<td>Represents the upper arm group. ID 300</td>
+</tr>
+<tr>
+<td><code>Lower_arm</code></td>
+<td>Represents the lower arm group. ID 301</td>
+</tr>
+<tr>
+<td><code>Hand</code></td>
+<td>Represents the hand group. ID 302</td>
+</tr>
+<tr>
+<td><code>Skull</code></td>
+<td>Represents the skull group. ID 303</td>
+</tr>
+<tr>
+<td><code>Neck</code></td>
+<td>Represents the neck group. ID 304</td>
+</tr>
+<tr>
+<td><code>Upper_leg</code></td>
+<td>Represents the upper leg group. ID 305</td>
+</tr>
+<tr>
+<td><code>Lower_leg</code></td>
+<td>Represents the lower leg group. ID 306</td>
+</tr>
+<tr>
+<td><code>Foot</code></td>
+<td>Represents the foot group. ID 307</td>
+</tr>
+<tr>
+<td><code>Palm</code></td>
+<td>Represents the palm group. ID 400</td>
+</tr>
+<tr>
+<td><code>Finger</code></td>
+<td>Represents the finger group. ID 401</td>
+</tr>
+<tr>
+<td><code>Sole</code></td>
+<td>Represents the sole group. ID 402</td>
+</tr>
+<tr>
+<td><code>Toe</code></td>
+<td>Represents the toe group. ID 403</td>
+</tr>
+<tr>
+<td><code>Thumb</code></td>
+<td>Represents the thumb group. ID 500</td>
+</tr>
+<tr>
+<td><code>Index</code></td>
+<td>Represents the index finger group. ID 501</td>
+</tr>
+<tr>
+<td><code>Middle</code></td>
+<td>Represents the middle finger group. ID 502</td>
+</tr>
+<tr>
+<td><code>Ring</code></td>
+<td>Represents the ring finger group. ID 503</td>
+</tr>
+<tr>
+<td><code>Pinky</code></td>
+<td>Represents the pinky finger group. ID 504</td>
+</tr>
+<tr>
+<td><code>Hallux</code></td>
+<td>Represents the hallux group. ID 505</td>
+</tr>
+<tr>
+<td><code>Index_toe</code></td>
+<td>Represents the index toe group. ID 506</td>
+</tr>
+<tr>
+<td><code>Middle_toe</code></td>
+<td>Represents the middle toe group. ID 507</td>
+</tr>
+<tr>
+<td><code>Ring_toe</code></td>
+<td>Represents the ring toe group. ID 508</td>
+</tr>
+<tr>
+<td><code>Pinky_toe</code></td>
+<td>Represents the pinky toe group. ID 509</td>
+</tr>
+<tr>
+<td><code>First</code></td>
+<td>Represents the first segment group. ID 600</td>
+</tr>
+<tr>
+<td><code>Second</code></td>
+<td>Represents the second segment group. ID 601</td>
+</tr>
+<tr>
+<td><code>Third</code></td>
+<td>Represents the third segment group. ID 602</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="interhaptics_commanddata">Interhaptics_CommandData</h1>
+<blockquote>
+<p><strong>Interhaptics Constant</strong> <a href="https://www.interhaptics.com/doc/interhaptics-engine/#commanddata">Interhaptics_CommandData</a></p>
+</blockquote>
+<p><br /></p>
+<p>This structure represents an instruction that is useful for finding the body part to render. It contains the following members:</p>
+<p>This struct is referenced by the following functions:</p>
+<ul>
+<li><a href="engine_events.html#interhaptics_add_target_to_event">interhaptics_add_target_to_event</a></li>
+<li><a href="engine_events.html#interhaptics_remove_target_from_event">interhaptics_remove_target_from_event</a></li>
+<li><a href="engine_events.html#interhaptics_update_event_positions">interhaptics_update_event_positions</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sign</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Any</a></td>
+<td>{constant.Interhaptics_Operator} Represents the sign of the operation (+/-) of type Operator.</td>
+</tr>
+<tr>
+<td>Group</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Any</a></td>
+<td>{constant.Interhaptics_GroupID} Represents the group targeted of type <a href="shared_types.html#interhaptics_groupid">Interhaptics_GroupID</a>.</td>
+</tr>
+<tr>
+<td>Side</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Any</a></td>
+<td>{constant.Interhaptics_LateralFlag} Represents the side targeted of type <a href="shared_types.html#interhaptics_lateralflag">Interhaptics_LateralFlag</a>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="providers.html" class="btn btn-neutral float-left" title="Providers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2024</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-Interhaptics" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="providers.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
