@@ -1,0 +1,50 @@
+# VS and VSC folders
+**/.vs/
+**/.vsc/
+
+# Common extensions
+**/*.exp
+**/*.ilk
+**/*.lib
+**/*.pdb
+**/*.exp
+**/*.exe
+
+# FMOD SDKs
+source/interhaptics_sdk/
+
+# FMOD DEMO options
+source/interhaptics_gml/options/
+
+# YYFMOD pre-compiled console binaries
+source/interhaptics_gml/extensions/Interhaptics/YYFMOD_xbox*.dll
+source/interhaptics_gml/extensions/Interhaptics/*.prx
+source/interhaptics_gml/extensions/Interhaptics/*.nro
+source/interhaptics_gml/extensions/Interhaptics/*.nrr
+
+# FMOD SDK dependencies
+# source/interhaptics_gml/extensions/Interhaptics/**/*HAR*.*
+# source/interhaptics_gml/extensions/Interhaptics/**/*Interhaptics.XInputProvider*.*
+
+# YYFMOD build solutions (temp & output)
+source/interhaptics_gml/extensions/Interhaptics/interhaptics_android/out/
+source/interhaptics_gml/extensions/Interhaptics/interhaptics_gdk/**/Gaming.Xbox.*.x64/
+source/interhaptics_gml/extensions/Interhaptics/interhaptics_playstation/**/ORBIS/
+source/interhaptics_gml/extensions/Interhaptics/interhaptics_playstation/**/Prospero/
+source/interhaptics_gml/extensions/Interhaptics/interhaptics_switch/**/NX64/
+source/interhaptics_gml/extensions/Interhaptics/interhaptics_windows/**/x64/
+
+# XCode and VS userdata
+*.user
+xcuserdata/
+
+# Temp cache
+*.sh-e
+.DS_Store
+
+# Allow macOS dylib placeholders
+!source/interhaptics_gml/extensions/Interhaptics/libHAR.dylib
+!source/interhaptics_gml/extensions/Interhaptics/libInterhaptics.XInputProvider.dylib
+
+# Packages output folder
+output/
