@@ -20,6 +20,8 @@
     {"$GMFolder":"","%Name":"Rooms","folderPath":"folders/Rooms.yy","name":"Rooms","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"GMEXT-Interhaptics Unix Docs.html","CopyToMask":0,"filePath":"datafiles","name":"GMEXT-Interhaptics Unix Docs.html","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"GMEXT-Interhaptics Win Docs.html","CopyToMask":0,"filePath":"datafiles","name":"GMEXT-Interhaptics Win Docs.html","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"Body Hit.haps","CopyToMask":-1,"filePath":"datafiles/HapticMaterials","name":"Body Hit.haps","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"Broken Glass.haps","CopyToMask":-1,"filePath":"datafiles/HapticMaterials","name":"Broken Glass.haps","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"Bullet Crack.haps","CopyToMask":-1,"filePath":"datafiles/HapticMaterials","name":"Bullet Crack.haps","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
