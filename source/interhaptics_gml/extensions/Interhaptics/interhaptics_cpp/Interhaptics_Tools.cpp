@@ -48,15 +48,15 @@ CommandData MapToCommandData(const std::map<std::string, const uint8_t*>& map)
 
 	if (auto search = map.find("sign"); search != map.end())
 	{
-		sign = (Operator)YYGetReal(search->second);
+		sign = (Operator)YYGetInt32(search->second);
 	}
 	if (auto search = map.find("group"); search != map.end())
 	{
-		group = (GroupID)YYGetReal(search->second);
+		group = (GroupID)YYGetInt32(search->second);
 	}
 	if (auto search = map.find("side"); search != map.end())
 	{
-		side = (LateralFlag)YYGetReal(search->second);
+		side = (LateralFlag)YYGetInt32(search->second);
 	}
 
 	CommandData command_data(sign, group, side);

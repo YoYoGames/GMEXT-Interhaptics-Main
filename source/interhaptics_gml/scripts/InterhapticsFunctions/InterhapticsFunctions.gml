@@ -2,7 +2,7 @@
 function interhaptics_add_target_to_event(material_id, target_array)
 {
 	var _args = [
-		[ target_array, undefined ] // struct
+		[ target_array, buffer_s32 ] // array[struct[sign : int, group : int, side : int]]
 	]
 		
 	var _args_buffer_address = ext_pack_args(_args);
@@ -13,7 +13,7 @@ function interhaptics_add_target_to_event(material_id, target_array)
 function interhaptics_remove_target_from_event(material_id,target_array)
 {
 	var _args = [
-		[ target_array, undefined ] // struct
+		[ target_array, buffer_s32 ] // array[struct[sign : int, group : int, side : int]]
 	]
 	
 	var _args_buffer_address = ext_pack_args(_args);	
@@ -23,7 +23,7 @@ function interhaptics_remove_target_from_event(material_id,target_array)
 function interhaptics_update_event_positions(material_id, target_array, texture_position, stiffness_position)
 {
 	var _args = [
-		[ target_array, undefined ] // struct
+		[ target_array, buffer_s32 ] // array[struct[sign : int, group : int, side : int]]
 	]
 	var _args_buffer_address = ext_pack_args(_args);
 	
