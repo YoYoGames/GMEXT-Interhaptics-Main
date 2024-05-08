@@ -77,8 +77,8 @@
   "optionsFile":"options.json",
   "packageId":"",
   "parent":{
-    "name":"Extensions",
-    "path":"folders/Extensions.yy",
+    "name":"Interhaptics",
+    "path":"folders/Interhaptics.yy",
   },
   "productId":"",
   "resourceType":"GMExtension",

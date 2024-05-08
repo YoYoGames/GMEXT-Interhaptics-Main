@@ -48,15 +48,15 @@ CommandData MapToCommandData(const std::map<std::string, const uint8_t*>& map)
 
 	if (auto search = map.find("sign"); search != map.end())
 	{
-		sign = (Operator)YYGetInt32(search->second);
+		sign = (Operator)YYGetReal(search->second);
 	}
 	if (auto search = map.find("group"); search != map.end())
 	{
-		group = (GroupID)YYGetInt32(search->second);
+		group = (GroupID)YYGetReal(search->second);
 	}
 	if (auto search = map.find("side"); search != map.end())
 	{
-		side = (LateralFlag)YYGetInt32(search->second);
+		side = (LateralFlag)YYGetReal(search->second);
 	}
 
 	CommandData command_data(sign, group, side);
@@ -74,4 +74,16 @@ std::vector<CommandData> VectorToCommandDataArray(const std::vector<const uint8_
 		vec.push_back(command_data);
 	}
 	return vec;
+}
+
+void VectorToDoubleArray(const std::vector<const uint8_t*>& vector, double* out)
+{
+	for (int i = 0; i < vector.size(); i++)
+		out[i] = YYGetReal(vector[i]);;
+}
+
+void VectorToIntArray(const std::vector<const uint8_t*>& vector, int* out)
+{
+	for (int i = 0; i < vector.size(); i++)
+		out[i] = (int)YYGetReal(vector[i]);;
 }

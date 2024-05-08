@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"ExtBufferIO",
   "parent":{
-    "name":"Extensions",
-    "path":"folders/Extensions.yy",
+    "name":"Interhaptics",
+    "path":"folders/Interhaptics.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

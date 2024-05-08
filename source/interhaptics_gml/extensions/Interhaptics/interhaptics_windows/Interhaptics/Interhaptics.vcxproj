@@ -137,7 +137,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>OS_Windows;DLLExport=;_CRT_SECURE_NO_WARNINGS;WIN_CLASSIC;_DEBUG;SIMPLEDESKTOPEXTENSION_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>OS_Windows;_CRT_SECURE_NO_WARNINGS;WIN_CLASSIC;_DEBUG;SIMPLEDESKTOPEXTENSION_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -148,7 +148,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticProviders\XInput\Interhaptics.XInputProvider.lib;..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticEngine\x64\HAR.lib;\$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticProviders\GameInput\Interhaptics.GameInputProvider.lib;..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticEngine\x64\HAR.lib;\$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /Y "$(TargetPath)" "$(ProjectDir)..\..\$(TargetFileName)"</Command>
@@ -160,7 +160,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>OS_Windows;DLLExport=;NDEBUG;SIMPLEDESKTOPEXTENSION_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>OS_Windows;NDEBUG;SIMPLEDESKTOPEXTENSION_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -173,7 +173,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticProviders\XInput\Interhaptics.XInputProvider.lib;..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticEngine\x64\HAR.lib;\$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticProviders\GameInput\Interhaptics.GameInputProvider.lib;..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticEngine\x64\HAR.lib;\$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /Y "$(TargetPath)" "$(ProjectDir)..\..\$(TargetFileName)"</Command>

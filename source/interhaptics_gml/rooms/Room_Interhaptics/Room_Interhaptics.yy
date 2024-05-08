@@ -32,7 +32,7 @@
   "name":"Room_Interhaptics",
   "parent":{
     "name":"Rooms",
-    "path":"folders/Rooms.yy",
+    "path":"folders/Interhaptics Demo/Rooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

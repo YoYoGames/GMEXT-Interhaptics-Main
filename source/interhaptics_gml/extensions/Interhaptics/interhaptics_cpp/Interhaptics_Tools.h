@@ -17,7 +17,7 @@
 #ifdef OS_Windows
 #define func extern "C" __declspec(dllexport)
 #else
-#if defined(OS_Linux) || defined(OS_MacOs)
+#ifdef defined(OS_Linux) || defined(OS_MacOs)
 #define func extern "C"
 #else
 #define func extern "C"
@@ -67,3 +67,5 @@ uint64_t packIndexIntoRef(uint32_t index, uint8_t type);
 
 CommandData MapToCommandData(const std::map<std::string, const uint8_t*>& map);
 std::vector<CommandData> VectorToCommandDataArray(const std::vector<const uint8_t*>& vector);
+void VectorToDoubleArray(const std::vector<const uint8_t*>& vector, double* out);
+void VectorToIntArray(const std::vector<const uint8_t*>& vector, int* out);

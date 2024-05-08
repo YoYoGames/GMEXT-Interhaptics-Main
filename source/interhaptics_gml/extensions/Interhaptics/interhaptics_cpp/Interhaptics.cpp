@@ -15,12 +15,12 @@ func double interhaptics_quit()
 func double interhaptics_add_hm(char* content)
 {
 	auto material_id = AddHM(content);
-	return (double)packIndexIntoRef(material_id, GM_INTERHAPTICS_TYPE_MATERIAL);
+	return packIndexIntoRef(material_id, GM_INTERHAPTICS_TYPE_MATERIAL);
 }
 
 func double interhaptics_update_hm(double material_ref, char* content)
 {
-	uint64_t material_id = 0;
+	double material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
 	return UpdateHM((int)material_id, content) ? 1.0 : 0.0;
@@ -28,7 +28,7 @@ func double interhaptics_update_hm(double material_ref, char* content)
 
 func double interhaptics_play_event(double material_ref, double vibration_offset, double texture_offset, double stiffness_offset)
 {
-	uint64_t material_id = 0;
+	double material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
 	PlayEvent((int)material_id, vibration_offset, texture_offset, stiffness_offset);
@@ -37,7 +37,7 @@ func double interhaptics_play_event(double material_ref, double vibration_offset
 
 func double interhaptics_stop_event(double material_ref)
 {
-	uint64_t material_id = 0;
+	double material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
 	StopEvent((int)material_id);
@@ -46,7 +46,7 @@ func double interhaptics_stop_event(double material_ref)
 
 func double interhaptics_add_target_to_event_multiplatform(double material_ref, char* buff_args)
 {
-	uint64_t material_id = 0;
+	double material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
 	auto args = buffer_unpack((uint8_t*)buff_args);
@@ -54,14 +54,14 @@ func double interhaptics_add_target_to_event_multiplatform(double material_ref, 
 
 	std::vector<CommandData> target = VectorToCommandDataArray(vect);
 
-	AddTargetToEventMarshal((int)material_id, target.data(), (int)target.size());
+	AddTargetToEventMarshal((int)material_id, target.data(), target.size());
 
 	return 0;
 }
 
 func double interhaptics_remove_target_from_event_multiplatform(double material_ref, char* buff_args)
 {
-	uint64_t material_id = 0;
+	double material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
 	auto args = buffer_unpack((uint8_t*)buff_args);
@@ -69,14 +69,14 @@ func double interhaptics_remove_target_from_event_multiplatform(double material_
 
 	std::vector<CommandData> target = VectorToCommandDataArray(vect);
 
-	RemoveTargetFromEventMarshal((int)material_id, target.data(), (int)target.size());
+	RemoveTargetFromEventMarshal((int)material_id, target.data(), target.size());
 
 	return 0;
 }
 
 func double interhaptics_remove_all_targets_from_event(double material_ref)
 {
-	uint64_t material_id = 0;
+	double material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
 	RemoveAllTargetsFromEvent((int)material_id);
@@ -91,7 +91,7 @@ func double interhaptics_compute_all_events(double current_time)
 
 func double interhaptics_update_event_positions_multiplatform(double material_ref, char* buff_args, double texture_position, double stiffness_position)
 {
-	uint64_t material_id = 0;
+	double material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
 	auto args = buffer_unpack((uint8_t*)buff_args);
@@ -99,13 +99,13 @@ func double interhaptics_update_event_positions_multiplatform(double material_re
 
 	std::vector<CommandData> target = VectorToCommandDataArray(vect);
 
-	UpdateEventPositionsMarshal((int)material_id, target.data(), (int)target.size(), texture_position, stiffness_position);
+	UpdateEventPositionsMarshal((int)material_id, target.data(), target.size(), texture_position, stiffness_position);
 	return 0;
 }
 
 func double interhaptics_set_event_offsets(double material_ref, double vibration_offset, double texture_offset, double stiffness_offet)
 {
-	uint64_t material_id = 0;
+	double material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
 	SetEventOffsets((int)material_id, vibration_offset, texture_offset, stiffness_offet);
@@ -126,10 +126,115 @@ func double interhaptics_clear_active_events()
 
 func double interhaptics_clear_event(double material_ref)
 {
-	uint64_t material_id = 0;
+	double material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
-	ClearEvent((int)material_id);
+	ClearEvent(material_id);
+	return 0;
+}
+
+///////////////////////////////////// 1.4.0
+
+func double interhaptics_set_global_intensity(double intensity)
+{
+	SetGlobalIntensity(intensity);
+	return 0;
+}
+
+func double interhaptics_get_global_intensity()
+{
+	GetGlobalIntensity();
+	return 0;
+}
+
+func double interhaptics_add_parametric_effect_multiplatform(char* buff_args)
+{
+	auto args = buffer_unpack((uint8_t*)buff_args);
+
+	auto vect = YYGetArray(args[0]);
+	double* amplitude = (double*)malloc(vect.size() * sizeof(double));
+	VectorToDoubleArray(vect, amplitude);
+
+	int amplitudeSize = vect.size();
+
+	vect = YYGetArray(args[1]);
+	double* pitch = (double*)malloc(vect.size() * sizeof(double));
+	VectorToDoubleArray(vect, pitch);
+
+	int pitchSize = vect.size();
+
+	double pitchMin = YYGetReal(args[2]);
+	double pitchMax = YYGetReal(args[3]);
+
+	vect = YYGetArray(args[4]);
+	double* transient = (double*)malloc(vect.size() * sizeof(double));
+	VectorToDoubleArray(vect, transient);
+	int transientSize = vect.size();
+
+	bool isLooping = YYGetReal(args[5])>0.5;
+
+	AddParametricEffect(amplitude, amplitudeSize, pitch, pitchSize, pitchMin, pitchMax, transient, transientSize, isLooping);
+
+	return 0;
+}
+
+func double interhaptics_delete_hm(double material_ref)
+{
+	double material_id = 0;
+	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
+
+	DeleteHM((int)material_id);
+	return 0;
+}
+
+func double interhaptics_transients_played_on_those_bodyparts_multiplatform(double perception,char* buff_args)
+{
+	auto args = buffer_unpack((uint8_t*)buff_args);
+
+	auto vect = YYGetArray(args[0]);
+	int* _bodyparts = (int*)malloc(vect.size() * sizeof(int));
+	VectorToIntArray(vect, _bodyparts);
+
+	int _numberOfBodyparts = vect.size();
+
+	return TransientsPlayedOnThoseBodyparts((int)perception, _bodyparts, _numberOfBodyparts)?1.0:0.0;
+}
+
+func double interhaptics_stop_all_events()
+{
+	StopAllEvents();
+	return 0;
+}
+
+func double interhaptics_set_event_intensity(double material_ref,double intensity)
+{
+	double material_id = 0;
+	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
+
+	SetEventIntensity((int)material_id, intensity);
+	return 0;
+}
+
+func double interhaptics_set_event_loop(double material_ref,double numberOfLoop)
+{
+	double material_id = 0;
+	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
+
+	SetEventLoop((int)material_id,(int)numberOfLoop);
+	return 0;
+}
+
+func double interhaptics_set_target_intensity_multiplatform(double material_ref, char* buff_args, double _intensity)
+{
+	double material_id = 0;
+	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
+
+	auto args = buffer_unpack((uint8_t*)buff_args);
+
+	auto vect = YYGetArray(args[0]);
+	std::vector<CommandData>  _target = VectorToCommandDataArray(vect);
+
+	SetTargetIntensityMarshal((int)material_id, _target.data(), _target.size(), (int)_intensity);
 	return 0;
 }
 

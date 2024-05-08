@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Objects",
-    "path":"folders/Objects.yy",
+    "path":"folders/Interhaptics Demo/Objects.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

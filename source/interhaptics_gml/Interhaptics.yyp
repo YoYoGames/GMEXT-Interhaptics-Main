@@ -10,14 +10,15 @@
   },
   "defaultScriptType":1,
   "Folders":[
-    {"$GMFolder":"","%Name":"Console Pointer","folderPath":"folders/Console Pointer.yy","name":"Console Pointer","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Extensions","folderPath":"folders/Extensions.yy","name":"Extensions","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Console Pointer","folderPath":"folders/Interhaptics Demo/Console Pointer.yy","name":"Console Pointer","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"GM Extensions Assets","folderPath":"folders/GM Extensions Assets.yy","name":"GM Extensions Assets","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Font","folderPath":"folders/GM Extensions Assets/Font.yy","name":"Font","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Objects","folderPath":"folders/GM Extensions Assets/Objects.yy","name":"Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Sprites","folderPath":"folders/GM Extensions Assets/Sprites.yy","name":"Sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Objects","folderPath":"folders/Objects.yy","name":"Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Rooms","folderPath":"folders/Rooms.yy","name":"Rooms","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Interhaptics Demo","folderPath":"folders/Interhaptics Demo.yy","name":"Interhaptics Demo","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Interhaptics","folderPath":"folders/Interhaptics.yy","name":"Interhaptics","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Objects","folderPath":"folders/Interhaptics Demo/Objects.yy","name":"Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Rooms","folderPath":"folders/Interhaptics Demo/Rooms.yy","name":"Rooms","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"GMEXT-Interhaptics Unix Docs.html","CopyToMask":0,"filePath":"datafiles","name":"GMEXT-Interhaptics Unix Docs.html","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
@@ -94,7 +95,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.400.0.532",
+    "IDEVersion":"2024.400.0.556",
   },
   "name":"Interhaptics",
   "resources":[

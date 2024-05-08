@@ -69,14 +69,16 @@ exit 0
 
     :: Get library file paths
     set SDK_ENGINE="%SDK_PATH%\bin\HapticEngine\x64\HAR.dll"
-    set SDK_PROVIDER="%SDK_PATH%\bin\HapticProviders\XInput\Interhaptics.XInputProvider.dll"
+    set SDK_GAMEINPUT_PROVIDER="%SDK_PATH%\bin\HapticProviders\GameInput\Interhaptics.GameInputProvider.dll"
+    :: set SDK_SENSA_PROVIDER="%SDK_PATH%\bin\HapticProviders\Sensa\Interhaptics.RazerProvider.dll"
 
     :: Asset hash match
     :: call %Utils% assertFileHashEquals %SDK_CORE_SOURCE% %WIN_SDK_HASH% "%ERROR_SDK_HASH%"
 
     echo "Copying Windows (64 bit) dependencies"
     if not exist "HAR.dll" call %Utils% itemCopyTo %SDK_ENGINE% "HAR.dll"
-    if not exist "Interhaptics.XInputProvider.dll" call %Utils% itemCopyTo %SDK_PROVIDER% "Interhaptics.XInputProvider.dll"
+    if not exist "Interhaptics.GameInputProvider.dll" call %Utils% itemCopyTo %SDK_GAMEINPUT_PROVIDER% "Interhaptics.GameInputProvider.dll"
+    :: if not exist "Interhaptics.RazerProvider.dll" call %Utils% itemCopyTo %SDK_SENSA_PROVIDER% "Interhaptics.RazerProvider.dll"
 
 exit /b 0
 

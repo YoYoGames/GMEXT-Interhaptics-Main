@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
-    "path":"folders/Objects.yy",
+    "path":"folders/Interhaptics Demo/Objects.yy",
   },
   "parentObjectId":{
     "name":"Obj_Interhaptics_Option_Parent",

@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Console Pointer",
-    "path":"folders/Console Pointer.yy",
+    "path":"folders/Interhaptics Demo/Console Pointer.yy",
   },
   "parentObjectId":null,
   "persistent":true,

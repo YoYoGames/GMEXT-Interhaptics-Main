@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Console Pointer",
-    "path":"folders/Console Pointer.yy",
+    "path":"folders/Interhaptics Demo/Console Pointer.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

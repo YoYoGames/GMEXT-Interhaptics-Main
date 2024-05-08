@@ -13,7 +13,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
-    "path":"folders/Objects.yy",
+    "path":"folders/Interhaptics Demo/Objects.yy",
   },
   "parentObjectId":{
     "name":"obj_gm_button",
