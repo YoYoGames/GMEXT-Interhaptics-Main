@@ -31,8 +31,6 @@
     <ClInclude Include="..\..\interhaptics_cpp\framework.h" />
     <ClInclude Include="..\..\interhaptics_cpp\Interhaptics_Tools.h" />
     <ClInclude Include="..\..\interhaptics_cpp\pch.h" />
-    <ClInclude Include="..\..\interhaptics_cpp\Ref.h" />
-    <ClInclude Include="..\..\interhaptics_cpp\YYRValue.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -94,7 +92,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(ProjectDir)/../../</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -143,16 +141,16 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>..\..\..\..\..\interhaptics_sdk\interhaptics_windows\include;..\..\..\..\..\interhaptics_sdk\interhaptics_windows;</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalHeaderUnitDependencies>
+      </AdditionalHeaderUnitDependencies>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticProviders\GameInput\Interhaptics.GameInputProvider.lib;..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticEngine\x64\HAR.lib;\$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>HAR.lib;Interhaptics.GameInputProvider.lib;Interhaptics.RazerProvider.lib;\$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticEngine\x64\;..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticProviders\GameInput\;..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticProviders\Sensa\</AdditionalLibraryDirectories>
     </Link>
-    <PostBuildEvent>
-      <Command>xcopy /Y "$(TargetPath)" "$(ProjectDir)..\..\$(TargetFileName)"</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -160,12 +158,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>OS_Windows;NDEBUG;SIMPLEDESKTOPEXTENSION_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;SIMPLEDESKTOPEXTENSION_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>..\..\..\..\..\interhaptics_sdk\interhaptics_windows\include;..\..\..\..\..\interhaptics_sdk\interhaptics_windows;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -173,11 +169,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticProviders\GameInput\Interhaptics.GameInputProvider.lib;..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticEngine\x64\HAR.lib;\$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>xcopy /Y "$(TargetPath)" "$(ProjectDir)..\..\$(TargetFileName)"</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

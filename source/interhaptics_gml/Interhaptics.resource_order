@@ -1,14 +1,15 @@
 {
   "FolderOrderSettings":[
-    {"name":"Console Pointer","order":2,"path":"folders/Interhaptics Demo/Console Pointer.yy",},
     {"name":"GM Extensions Assets","order":2,"path":"folders/GM Extensions Assets.yy",},
     {"name":"Font","order":1,"path":"folders/GM Extensions Assets/Font.yy",},
     {"name":"Objects","order":2,"path":"folders/GM Extensions Assets/Objects.yy",},
     {"name":"Sprites","order":3,"path":"folders/GM Extensions Assets/Sprites.yy",},
     {"name":"Interhaptics Demo","order":6,"path":"folders/Interhaptics Demo.yy",},
+    {"name":"Console Pointer","order":2,"path":"folders/Interhaptics Demo/Console Pointer.yy",},
     {"name":"Rooms","order":1,"path":"folders/Interhaptics Demo/Rooms.yy",},
   ],
   "ResourceOrderSettings":[
+    {"name":"Interhaptics","order":2,"path":"extensions/Interhaptics/Interhaptics.yy",},
     {"name":"fnt_gm_20","order":1,"path":"fonts/fnt_gm_20/fnt_gm_20.yy",},
     {"name":"fnt_gm_30","order":2,"path":"fonts/fnt_gm_30/fnt_gm_30.yy",},
     {"name":"obj_gm_text","order":1,"path":"objects/obj_gm_text/obj_gm_text.yy",},
@@ -24,9 +25,8 @@
     {"name":"Obj_Interhaptics_Option_Parent","order":1,"path":"objects/Obj_Interhaptics_Option_Parent/Obj_Interhaptics_Option_Parent.yy",},
     {"name":"Obj_Interhaptics_Side","order":10,"path":"objects/Obj_Interhaptics_Side/Obj_Interhaptics_Side.yy",},
     {"name":"Obj_Interhaptics_Sign","order":8,"path":"objects/Obj_Interhaptics_Sign/Obj_Interhaptics_Sign.yy",},
-    {"name":"ExtBufferIO","order":3,"path":"scripts/ExtBufferIO/ExtBufferIO.yy",},
-    {"name":"InterhapticsDefinitions","order":1,"path":"scripts/InterhapticsDefinitions/InterhapticsDefinitions.yy",},
-    {"name":"InterhapticsFunctions","order":2,"path":"scripts/InterhapticsFunctions/InterhapticsFunctions.yy",},
+    {"name":"ExtBufferIO","order":1,"path":"scripts/ExtBufferIO/ExtBufferIO.yy",},
+    {"name":"InterhapticsFunctions","order":3,"path":"scripts/InterhapticsFunctions/InterhapticsFunctions.yy",},
     {"name":"Spr_Console_Pointer","order":1,"path":"sprites/Spr_Console_Pointer/Spr_Console_Pointer.yy",},
     {"name":"spr_gm_button","order":1,"path":"sprites/spr_gm_button/spr_gm_button.yy",},
     {"name":"spr_gm_textbox","order":2,"path":"sprites/spr_gm_textbox/spr_gm_textbox.yy",},
