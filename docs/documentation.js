@@ -26,6 +26,27 @@ function interhaptics_quit() {}
 
 
 /**
+ * @func interhaptics_set_global_intensity
+ * @desc This function sets the global rendering intensity factor for the whole engine.
+ * 
+ * @param {real} intensity A positive value. 0 is nothing. Base value is 1.
+ * @func_end
+ */
+function interhaptics_set_global_intensity(intensity) {}
+
+
+/**
+ * @func interhaptics_get_global_intensity
+ * @desc This function gets the global rendering intensity factor for the whole engine.
+ * 
+ * It returns the global intensity, or -1 if the mixer is not initialised.
+ * @returns {real}
+ * @func_end
+ */
+function interhaptics_get_global_intensity() {}
+
+
+/**
  * @func interhaptics_add_hm
  * @desc This function adds the content of an .haps file to the Interhaptics Engine for future use. It returns a reference to the new haptic effect to be used in other functions.
  * @param {string} content The JSON content of the .haps file to be loaded. This needs to follow the Interhaptics .haps format.
@@ -33,6 +54,32 @@ function interhaptics_quit() {}
  * @func_end
  */
 function interhaptics_add_hm(content) {}
+
+
+/**
+ * @func interhaptics_add_parametric_effect
+ * @desc This function creates a haptic effect by processing parameters such as amplitude, pitch, and transients. This function generates a haptic effect based on the given input parameters and can optionally loop it.
+ * 
+ * It returns the ID of the haptic effect created.
+ * @param {array[real]} amplitude An array of amplitude values. Should be formatted as Time - Value pairs. Value is between 0 and 1.
+ * @param {array[real]} pitch An array of pitch values. Should be formatted as Time - Value pairs. Value is between 0 and 1.
+ * @param {real} freq_min The minimum value for the frequency range.
+ * @param {real} freq_max The maximum value for the frequency range.
+ * @param {array[real]} transient An array of transient values. The array should be formatted as Time - Amplitude - Pitch triplets, with both Amplitude and Pitch values ranging between 0 and 1.
+ * @param {array[real]} is_looping Indicates whether the effect should loop or not.
+ * @returns {real}
+ * @func_end
+ */
+function interhaptics_add_parametric_effect(amplitude, pitch, freq_min, freq_max, transient, is_looping) {}
+
+
+/**
+ * @func interhaptics_delete_hm
+ * @desc This function deletes an existing haptic effect.
+ * @param {real} material_ref The ID of the haptic effect to delete.
+ * @func_end
+ */
+function interhaptics_delete_hm(material_ref) {}
 
 
 /**
@@ -45,6 +92,18 @@ function interhaptics_add_hm(content) {}
  * @func_end
  */
 function interhaptics_update_hm(material_ref, content) {}
+
+
+/**
+ * @func interhaptics_transients_played_on_those_bodyparts
+ * @desc This function returns true if at least one active event targeting the given body parts contains transients.
+ * 
+ * @param {real} perception The perception to play
+ * @param {array[real]} bodyparts The IDs of the body parts targeted
+ * @returns {boolean}
+ * @func_end
+ */
+function interhaptics_transients_played_on_those_bodyparts(perception, bodyparts) {}
 
 
 /**
@@ -69,6 +128,15 @@ function interhaptics_play_event(material_ref, vibration_offset, texture_offset,
  * @func_end
  */
 function interhaptics_stop_event(material_ref) {}
+
+
+/**
+ * @func interhaptics_stop_all_events
+ * @desc This function stops the rendering playback of all haptic sources.
+ * @func_end
+ */
+function interhaptics_stop_all_events() {}
+
 
 /**
  * @func interhaptics_add_target_to_event
@@ -155,6 +223,37 @@ function interhaptics_clear_active_events() {}
  * @func_end
  */
 function interhaptics_clear_event(material_ref) {}
+
+
+/**
+ * @func interhaptics_set_event_intensity
+ * @desc This function sets the haptics intensity factor for a specific source.
+ * @param {real} material_ref The ID of the source, which is the same as the attached haptic effect.
+ * @param {real} intensity The intensity factor value. Always clamped above 0.
+ * @func_end
+ */
+function interhaptics_set_event_intensity(material_ref, intensity) {}
+
+
+/**
+ * @func interhaptics_set_event_loop
+ * @desc This function sets the loop flag for a specific source.
+ * @param {real} material_ref The ID of the source, which is the same as the attached haptic effect.
+ * @param {real} number_of_loops The number of loops for the event. <= 1 is one iteration.
+ * @func_end
+ */
+function interhaptics_set_event_loop(material_ref, number_of_loops) {}
+
+
+/**
+ * @func interhaptics_set_target_intensity
+ * @desc This function sets the haptics intensity factor for a specific target of a source.
+ * @param {real} material_ref The ID of the source, which is the same as the attached haptic effect.
+ * @param {array[struct.Interhaptics_CommandData]} target The target to change intensity.
+ * @param {real} intensity The intensity factor value. Always clamped above 0.
+ * @func_end
+ */
+function interhaptics_set_target_intensity(material_ref, target, intensity) {}
 
 
 /**
@@ -322,8 +421,13 @@ function interhaptics_provider_render_haptics() {}
   * @section_func
   * @ref interhaptics_init
   * @ref interhaptics_quit
+  * @ref interhaptics_set_global_intensity
+  * @ref interhaptics_get_global_intensity
   * @ref interhaptics_add_hm
+  * @ref interhaptics_add_parametric_effect
+  * @ref interhaptics_delete_hm
   * @ref interhaptics_update_hm
+  * @ref interhaptics_transients_played_on_those_bodyparts
   * @section_end
   * 
   * @module_end
@@ -342,12 +446,16 @@ function interhaptics_provider_render_haptics() {}
   * @section_func
   * @ref interhaptics_play_event
   * @ref interhaptics_stop_event
+  * @ref interhaptics_stop_all_events
   * @ref interhaptics_add_target_to_event
   * @ref interhaptics_remove_target_from_event
   * @ref interhaptics_remove_all_targets_from_event
   * @ref interhaptics_compute_all_events
   * @ref interhaptics_update_event_positions
   * @ref interhaptics_set_event_offsets
+  * @ref interhaptics_set_event_intensity
+  * @ref interhaptics_set_event_loop
+  * @ref interhaptics_set_target_intensity
   * @ref interhaptics_clear_inactive_events
   * @ref interhaptics_clear_active_events
   * @ref interhaptics_clear_event
