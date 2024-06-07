@@ -66,7 +66,7 @@ function interhaptics_add_hm(content) {}
  * @param {real} freq_min The minimum value for the frequency range.
  * @param {real} freq_max The maximum value for the frequency range.
  * @param {array[real]} transient An array of transient values. The array should be formatted as Time - Amplitude - Pitch triplets, with both Amplitude and Pitch values ranging between 0 and 1.
- * @param {array[real]} is_looping Indicates whether the effect should loop or not.
+ * @param {boolean} is_looping Indicates whether the effect should loop or not.
  * @returns {real}
  * @func_end
  */
@@ -95,15 +95,15 @@ function interhaptics_update_hm(material_ref, content) {}
 
 
 /**
- * @func interhaptics_transients_played_on_those_bodyparts
+ * @func interhaptics_transients_played_on_those_body_parts
  * @desc This function returns true if at least one active event targeting the given body parts contains transients.
  * 
  * @param {real} perception The perception to play
- * @param {array[real]} bodyparts The IDs of the body parts targeted
+ * @param {array[real]} body_parts The IDs of the body parts targeted
  * @returns {boolean}
  * @func_end
  */
-function interhaptics_transients_played_on_those_bodyparts(perception, bodyparts) {}
+function interhaptics_transients_played_on_those_body_parts(perception, body_parts) {}
 
 
 /**
