@@ -143,8 +143,7 @@ func double interhaptics_set_global_intensity(double intensity)
 
 func double interhaptics_get_global_intensity()
 {
-	GetGlobalIntensity();
-	return 0;
+	return GetGlobalIntensity();
 }
 
 func double interhaptics_add_parametric_effect_multiplatform(char* buff_args)
