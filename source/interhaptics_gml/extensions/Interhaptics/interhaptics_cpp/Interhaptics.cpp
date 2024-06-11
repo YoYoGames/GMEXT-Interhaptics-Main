@@ -234,7 +234,7 @@ func double interhaptics_set_target_intensity_multiplatform(double material_ref,
 	auto vect = YYGetArray(args[0]);
 	std::vector<CommandData>  _target = VectorToCommandDataArray(vect);
 
-	SetTargetIntensityMarshal((int)material_id, _target.data(), (int)_target.size(), (int)_intensity);
+	SetTargetIntensityMarshal((int)material_id, _target.data(), (int)_target.size(), (int)intensity);
 	return 0;
 }
 

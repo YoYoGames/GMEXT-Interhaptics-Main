@@ -158,10 +158,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;SIMPLEDESKTOPEXTENSION_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DLLExport=;NDEBUG;SIMPLEDESKTOPEXTENSION_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>..\..\..\..\..\interhaptics_sdk\interhaptics_windows\include;..\..\..\..\..\interhaptics_sdk\interhaptics_windows;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -169,6 +171,8 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <AdditionalLibraryDirectories>..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticEngine\x64\;..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticProviders\GameInput\;..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticProviders\Sensa\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>HAR.lib;Interhaptics.GameInputProvider.lib;Interhaptics.RazerProvider.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
