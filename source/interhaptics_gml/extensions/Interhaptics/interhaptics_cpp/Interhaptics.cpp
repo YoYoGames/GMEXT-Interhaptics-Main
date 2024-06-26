@@ -1,13 +1,28 @@
 
 #include "Interhaptics_Tools.h"
 
+#include "windows.h"
+
+std::vector<void*> providers;
 func double interhaptics_init()
 {
+	//HINSTANCE GameInputHandle = LoadLibraryA("Interhaptics.GameInputProvider.dll");
+	providers.push_back((void*)LoadLibraryA("Interhaptics.GameInputProvider.dll"));
+	providers.push_back((void*)LoadLibraryA("Interhaptics.RazerProvider.dll"));
+
 	return Init() ? 1.0 : 0.0;
 }
 
 func double interhaptics_quit()
 {
+	for (int i = 0; i < providers.size(); i++)
+	{
+		HINSTANCE DllHandle = (HINSTANCE)providers[i];
+		FreeLibrary(DllHandle);
+	}
+	
+	providers.clear();
+
 	Quit();
 	return 0;
 }
@@ -212,6 +227,7 @@ func double interhaptics_set_event_intensity(double material_ref,double intensit
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
 	SetEventIntensity((int)material_id, intensity);
+	
 	return 0;
 }
 
@@ -240,31 +256,135 @@ func double interhaptics_set_target_intensity_multiplatform(double material_ref,
 
 ///////////////////////////////////// Provider
 
-extern "C"
-{
-	DLLExport bool ProviderInit();
-	DLLExport bool ProviderIsPresent();
-	DLLExport bool ProviderClean();
-	DLLExport void ProviderRenderHaptics();
-}
+//func double interhaptics_provider_init()
+//{
+//	return ProviderInit() ? 1.0 : 0.0;
+//}
 
 func double interhaptics_provider_init()
 {
-	return ProviderInit() ? 1.0 : 0.0;
+	typedef void(__stdcall* f_providerInit)();
+
+	for (int i = 0; i < providers.size(); i++)
+	{
+		HINSTANCE DllHandle = (HINSTANCE)providers[i];
+
+		if (!DllHandle)
+		{
+			//std::clog << "Provider not found." << std::endl;
+			continue;
+		}
+
+		f_providerInit providerInit = (f_providerInit)GetProcAddress(DllHandle, "ProviderInit");
+
+		if (!providerInit)
+		{
+			//std::clog << "providerInit not found. " << std::endl;
+			continue;
+		}
+
+		providerInit();
+	}
+	return 0;
 }
 
+//func double interhaptics_provider_is_present()
+//{
+//	return ProviderIsPresent() ? 1.0 : 0.0;
+//}
+
+#include <cmath>
 func double interhaptics_provider_is_present()
 {
-	return ProviderIsPresent() ? 1.0 : 0.0;
+	typedef bool(__stdcall* f_providerIsPresent)();
+
+	double ret = 0;
+
+	for (int i = 0; i < providers.size(); i++)
+	{
+		HINSTANCE DllHandle = (HINSTANCE)providers[i];
+
+		if (!DllHandle)
+		{
+			//std::clog << "Provider not found." << std::endl;
+			continue;
+		}
+
+		f_providerIsPresent providerIsPresent = (f_providerIsPresent)GetProcAddress(DllHandle, "ProviderIsPresent");
+
+		if (!providerIsPresent)
+		{
+			//std::clog << "providerIsPresent not found. " << std::endl;
+			continue;
+		}
+
+		if(providerIsPresent())
+			ret += (int)(1 << i);
+	}
+	return ret;
 }
+
+//func double interhaptics_provider_provider_clean()
+//{
+//	return ProviderClean() ? 1.0 : 0.0;
+//}
 
 func double interhaptics_provider_provider_clean()
 {
-	return ProviderClean() ? 1.0 : 0.0;
+	typedef void(__stdcall* f_providerClean)();
+
+	for (int i = 0; i < providers.size(); i++)
+	{
+		HINSTANCE DllHandle = (HINSTANCE)providers[i];
+
+		if (!DllHandle)
+		{
+			//std::clog << "Provider not found." << std::endl;
+			continue;
+		}
+
+		f_providerClean providerClean = (f_providerClean)GetProcAddress(DllHandle, "ProviderClean");
+
+		if (!providerClean)
+		{
+			//std::clog << "providerClean not found. " << std::endl;
+			continue;
+		}
+
+		providerClean();
+	}
+	return 0;
 }
+
+//func double interhaptics_provider_render_haptics()
+//{
+//	ProviderRenderHaptics();
+//	return 0;
+//}
 
 func double interhaptics_provider_render_haptics()
 {
-	ProviderRenderHaptics();
+	typedef void(__stdcall* f_providerRenderHaptics)();
+
+	for (int i = 0; i < providers.size(); i++)
+	{
+		HINSTANCE DllHandle = (HINSTANCE)providers[i];
+
+		if (!DllHandle)
+		{
+			//std::clog << "Provider not found." << std::endl;
+			continue;
+		}
+
+		f_providerRenderHaptics providerRenderHaptics = (f_providerRenderHaptics)GetProcAddress(DllHandle, "ProviderRenderHaptics");
+
+		if (!providerRenderHaptics)
+		{
+			//std::clog << "ProviderRenderHaptics not found. " << std::endl;
+			continue;
+		}
+
+		providerRenderHaptics();
+	}
 	return 0;
 }
