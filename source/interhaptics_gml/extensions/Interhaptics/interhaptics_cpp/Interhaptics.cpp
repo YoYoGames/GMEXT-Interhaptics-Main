@@ -3,38 +3,56 @@
 
 #include "windows.h"
 
-std::vector<void*> providers;
+std::vector<void*> g_providerHandles;
+std::vector<std::string> g_providerFilenames = {
+	"Interhaptics.GameInputProvider.dll",
+	"Interhaptics.RazerProvider.dll",
+};
+
+bool g_isInitialised = false;
+
 func double interhaptics_init()
 {
-	//HINSTANCE GameInputHandle = LoadLibraryA("Interhaptics.GameInputProvider.dll");
-	providers.push_back((void*)LoadLibraryA("Interhaptics.GameInputProvider.dll"));
-	providers.push_back((void*)LoadLibraryA("Interhaptics.RazerProvider.dll"));
+	if (g_isInitialised) return 1.0;
 
-	return Init() ? 1.0 : 0.0;
+	g_isInitialised = Init();
+	if (g_isInitialised) {
+		for (const auto& providerFilename : g_providerFilenames) {
+			g_providerHandles.push_back((void*)LoadLibraryA(providerFilename.c_str()));
+		}
+	}
+
+	return g_isInitialised ? 1.0 : 0.0;
 }
 
 func double interhaptics_quit()
 {
-	for (int i = 0; i < providers.size(); i++)
+	if (!g_isInitialised) return 0;
+	g_isInitialised = false;
+
+	for (const auto& providerHandle : g_providerHandles)
 	{
-		HINSTANCE DllHandle = (HINSTANCE)providers[i];
-		FreeLibrary(DllHandle);
+		FreeLibrary((HMODULE)providerHandle);
 	}
-	
-	providers.clear();
+	g_providerHandles.clear();
 
 	Quit();
+
 	return 0;
 }
 
 func double interhaptics_add_hm(char* content)
 {
+	if (!g_isInitialised) return -1;
+
 	auto material_id = AddHM(content);
 	return (double)packIndexIntoRef(material_id, GM_INTERHAPTICS_TYPE_MATERIAL);
 }
 
 func double interhaptics_update_hm(double material_ref, char* content)
 {
+	if (!g_isInitialised) return -1;
+
 	uint64_t material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
@@ -43,6 +61,8 @@ func double interhaptics_update_hm(double material_ref, char* content)
 
 func double interhaptics_play_event(double material_ref, double vibration_offset, double texture_offset, double stiffness_offset)
 {
+	if (!g_isInitialised) return -1;
+
 	uint64_t material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
@@ -53,6 +73,8 @@ func double interhaptics_play_event(double material_ref, double vibration_offset
 
 func double interhaptics_stop_event(double material_ref)
 {
+	if (!g_isInitialised) return -1;
+
 	uint64_t material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
@@ -62,6 +84,8 @@ func double interhaptics_stop_event(double material_ref)
 
 func double interhaptics_add_target_to_event_multiplatform(double material_ref, char* buff_args)
 {
+	if (!g_isInitialised) return -1;
+
 	uint64_t material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
@@ -77,6 +101,8 @@ func double interhaptics_add_target_to_event_multiplatform(double material_ref, 
 
 func double interhaptics_remove_target_from_event_multiplatform(double material_ref, char* buff_args)
 {
+	if (!g_isInitialised) return -1;
+
 	uint64_t material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
@@ -92,6 +118,8 @@ func double interhaptics_remove_target_from_event_multiplatform(double material_
 
 func double interhaptics_remove_all_targets_from_event(double material_ref)
 {
+	if (!g_isInitialised) return -1;
+
 	uint64_t material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
@@ -101,12 +129,16 @@ func double interhaptics_remove_all_targets_from_event(double material_ref)
 
 func double interhaptics_compute_all_events(double current_time)
 {
+	if (!g_isInitialised) return -1;
+
 	ComputeAllEvents(current_time);
 	return 0;
 }
 
 func double interhaptics_update_event_positions_multiplatform(double material_ref, char* buff_args, double texture_position, double stiffness_position)
 {
+	if (!g_isInitialised) return -1;
+
 	uint64_t material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
@@ -121,6 +153,8 @@ func double interhaptics_update_event_positions_multiplatform(double material_re
 
 func double interhaptics_set_event_offsets(double material_ref, double vibration_offset, double texture_offset, double stiffness_offet)
 {
+	if (!g_isInitialised) return -1;
+
 	uint64_t material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
@@ -130,18 +164,24 @@ func double interhaptics_set_event_offsets(double material_ref, double vibration
 
 func double interhaptics_clear_inactive_events()
 {
+	if (!g_isInitialised) return -1;
+
 	ClearInactiveEvents();
 	return 0;
 }
 
 func double interhaptics_clear_active_events()
 {
+	if (!g_isInitialised) return -1;
+
 	ClearActiveEvents();
 	return 0;
 }
 
 func double interhaptics_clear_event(double material_ref)
 {
+	if (!g_isInitialised) return -1;
+
 	uint64_t material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
@@ -153,17 +193,23 @@ func double interhaptics_clear_event(double material_ref)
 
 func double interhaptics_set_global_intensity(double intensity)
 {
+	if (!g_isInitialised) return -1;
+
 	SetGlobalIntensity(intensity);
 	return 0;
 }
 
 func double interhaptics_get_global_intensity()
 {
+	if (!g_isInitialised) return -1;
+
 	return GetGlobalIntensity();
 }
 
 func double interhaptics_add_parametric_effect_multiplatform(char* buff_args)
 {
+	if (!g_isInitialised) return -1;
+
 	auto args = buffer_unpack((uint8_t*)buff_args);
 
 	auto vect = YYGetArray(args[0]);
@@ -195,6 +241,8 @@ func double interhaptics_add_parametric_effect_multiplatform(char* buff_args)
 
 func double interhaptics_delete_hm(double material_ref)
 {
+	if (!g_isInitialised) return -1;
+
 	uint64_t material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
@@ -204,6 +252,8 @@ func double interhaptics_delete_hm(double material_ref)
 
 func double interhaptics_transients_played_on_those_body_parts_multiplatform(double perception,char* buff_args)
 {
+	if (!g_isInitialised) return -1;
+
 	auto args = buffer_unpack((uint8_t*)buff_args);
 
 	auto vect = YYGetArray(args[0]);
@@ -217,12 +267,16 @@ func double interhaptics_transients_played_on_those_body_parts_multiplatform(dou
 
 func double interhaptics_stop_all_events()
 {
+	if (!g_isInitialised) return -1;
+
 	StopAllEvents();
 	return 0;
 }
 
 func double interhaptics_set_event_intensity(double material_ref,double intensity)
 {
+	if (!g_isInitialised) return -1;
+
 	uint64_t material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
@@ -233,6 +287,8 @@ func double interhaptics_set_event_intensity(double material_ref,double intensit
 
 func double interhaptics_set_event_loop(double material_ref,double number_of_loop)
 {
+	if (!g_isInitialised) return -1;
+
 	uint64_t material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
@@ -242,6 +298,8 @@ func double interhaptics_set_event_loop(double material_ref,double number_of_loo
 
 func double interhaptics_set_target_intensity_multiplatform(double material_ref, char* buff_args, double intensity)
 {
+	if (!g_isInitialised) return -1;
+
 	uint64_t material_id = 0;
 	VALIDATE_REF_TYPE(material_ref, GM_INTERHAPTICS_TYPE_MATERIAL, material_id);
 
@@ -256,30 +314,23 @@ func double interhaptics_set_target_intensity_multiplatform(double material_ref,
 
 ///////////////////////////////////// Provider
 
-//func double interhaptics_provider_init()
-//{
-//	return ProviderInit() ? 1.0 : 0.0;
-//}
-
 func double interhaptics_provider_init()
 {
+	if (!g_isInitialised) return -1;
+
 	typedef void(__stdcall* f_providerInit)();
 
-	for (int i = 0; i < providers.size(); i++)
+	for (const auto& providerHandle : g_providerHandles)
 	{
-		HINSTANCE DllHandle = (HINSTANCE)providers[i];
-
-		if (!DllHandle)
+		if (!providerHandle)
 		{
-			//std::clog << "Provider not found." << std::endl;
 			continue;
 		}
 
-		f_providerInit providerInit = (f_providerInit)GetProcAddress(DllHandle, "ProviderInit");
+		f_providerInit providerInit = (f_providerInit)GetProcAddress((HMODULE)providerHandle, "ProviderInit");
 
 		if (!providerInit)
 		{
-			//std::clog << "providerInit not found. " << std::endl;
 			continue;
 		}
 
@@ -288,66 +339,51 @@ func double interhaptics_provider_init()
 	return 0;
 }
 
-//func double interhaptics_provider_is_present()
-//{
-//	return ProviderIsPresent() ? 1.0 : 0.0;
-//}
-
-#include <cmath>
 func double interhaptics_provider_is_present()
 {
+	if (!g_isInitialised) return -1;
+
 	typedef bool(__stdcall* f_providerIsPresent)();
 
-	double ret = 0;
+	int64_t ret = 0;
 
-	for (int i = 0; i < providers.size(); i++)
+	for (int i = 0; i < g_providerHandles.size(); i++)
 	{
-		HINSTANCE DllHandle = (HINSTANCE)providers[i];
+		HMODULE providerHandle = (HMODULE)g_providerHandles[i];
 
-		if (!DllHandle)
-		{
-			//std::clog << "Provider not found." << std::endl;
+		if (!providerHandle) {
 			continue;
 		}
 
-		f_providerIsPresent providerIsPresent = (f_providerIsPresent)GetProcAddress(DllHandle, "ProviderIsPresent");
+		f_providerIsPresent providerIsPresent = (f_providerIsPresent)GetProcAddress(providerHandle, "ProviderIsPresent");
 
-		if (!providerIsPresent)
-		{
-			//std::clog << "providerIsPresent not found. " << std::endl;
+		if (!providerIsPresent) {
 			continue;
 		}
 
-		if(providerIsPresent())
-			ret += (int)(1 << i);
+		if (providerIsPresent()) {
+			ret |= (1ULL << i);
+		}
 	}
-	return ret;
-}
 
-//func double interhaptics_provider_provider_clean()
-//{
-//	return ProviderClean() ? 1.0 : 0.0;
-//}
+	return (double)ret;
+}
 
 func double interhaptics_provider_provider_clean()
 {
+	if (!g_isInitialised) return -1;
+
 	typedef void(__stdcall* f_providerClean)();
 
-	for (int i = 0; i < providers.size(); i++)
+	for (const auto& providerHandle : g_providerHandles)
 	{
-		HINSTANCE DllHandle = (HINSTANCE)providers[i];
-
-		if (!DllHandle)
-		{
-			//std::clog << "Provider not found." << std::endl;
+		if (!providerHandle) {
 			continue;
 		}
 
-		f_providerClean providerClean = (f_providerClean)GetProcAddress(DllHandle, "ProviderClean");
+		f_providerClean providerClean = (f_providerClean)GetProcAddress((HMODULE)providerHandle, "ProviderClean");
 
-		if (!providerClean)
-		{
-			//std::clog << "providerClean not found. " << std::endl;
+		if (!providerClean) {
 			continue;
 		}
 
@@ -356,31 +392,21 @@ func double interhaptics_provider_provider_clean()
 	return 0;
 }
 
-//func double interhaptics_provider_render_haptics()
-//{
-//	ProviderRenderHaptics();
-//	return 0;
-//}
-
 func double interhaptics_provider_render_haptics()
 {
+	if (!g_isInitialised) return -1;
+
 	typedef void(__stdcall* f_providerRenderHaptics)();
 
-	for (int i = 0; i < providers.size(); i++)
+	for (const auto& providerHandle : g_providerHandles)
 	{
-		HINSTANCE DllHandle = (HINSTANCE)providers[i];
-
-		if (!DllHandle)
-		{
-			//std::clog << "Provider not found." << std::endl;
+		if (!providerHandle) {
 			continue;
 		}
 
-		f_providerRenderHaptics providerRenderHaptics = (f_providerRenderHaptics)GetProcAddress(DllHandle, "ProviderRenderHaptics");
+		f_providerRenderHaptics providerRenderHaptics = (f_providerRenderHaptics)GetProcAddress((HMODULE)providerHandle, "ProviderRenderHaptics");
 
-		if (!providerRenderHaptics)
-		{
-			//std::clog << "ProviderRenderHaptics not found. " << std::endl;
+		if (!providerRenderHaptics) {
 			continue;
 		}
 

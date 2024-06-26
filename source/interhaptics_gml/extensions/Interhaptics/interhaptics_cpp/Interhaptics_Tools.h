@@ -17,7 +17,7 @@
 #ifdef OS_Windows
 #define func extern "C" __declspec(dllexport)
 #else
-#ifdef defined(OS_Linux) || defined(OS_MacOs)
+#if defined(OS_Linux) || defined(OS_MacOs)
 #define func extern "C"
 #else
 #define func extern "C"
