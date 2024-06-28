@@ -148,7 +148,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>HAR.lib;Interhaptics.GameInputProvider.lib;Interhaptics.RazerProvider.lib;\$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>HAR.lib;\$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticEngine\x64\;..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticProviders\GameInput\;..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticProviders\Sensa\</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
@@ -175,7 +175,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <AdditionalLibraryDirectories>..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticEngine\x64\;..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticProviders\GameInput\;..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticProviders\Sensa\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>HAR.lib;Interhaptics.GameInputProvider.lib;Interhaptics.RazerProvider.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>HAR.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /Y "$(TargetPath)" "$(ProjectDir)..\..\$(TargetFileName)"</Command>

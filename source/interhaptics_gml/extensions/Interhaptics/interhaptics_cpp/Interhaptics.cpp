@@ -1,6 +1,5 @@
 
 #include "Interhaptics_Tools.h"
-
 #include "windows.h"
 
 std::vector<HMODULE> g_providerHandles;
@@ -18,15 +17,33 @@ bool g_providerInitialised[numProviders] = {
 
 bool g_isInitialised = false;
 
+void LoadProviderModules() {
+	// We use a static flag, we want to load the modules just on the first call.
+	// We don't load modules more than once even if function is spammed.
+	static bool shouldLoadModules = true;
+
+	if (shouldLoadModules) {
+		for (const auto& providerFilename : g_providerFilenames) {
+			g_providerHandles.push_back(LoadLibraryA(providerFilename));
+		}
+		shouldLoadModules = false;
+	}
+}
+
+void UnloadProviderModules() {
+	// We are not freeing the libraries because apparently this process is blocking
+	// the game's main thread so we just let the OS clean them up when the game ends.
+	// If the game is not terminated and the extension is reinitialized we just reuse
+	// the same loaded modules (see interhaptics_init).
+}
+
 func double interhaptics_init()
 {
 	if (g_isInitialised) return 1.0;
 
 	g_isInitialised = Init();
 	if (g_isInitialised) {
-		for (const auto& providerFilename : g_providerFilenames) {
-			g_providerHandles.push_back(LoadLibraryA(providerFilename));
-		}
+		LoadProviderModules();
 	}
 
 	return g_isInitialised ? 1.0 : 0.0;
@@ -37,12 +54,7 @@ func double interhaptics_quit()
 	if (!g_isInitialised) return 0;
 	g_isInitialised = false;
 
-	for (const auto& providerHandle : g_providerHandles)
-	{
-		FreeLibrary(providerHandle);
-	}
-	g_providerHandles.clear();
-
+	UnloadProviderModules();
 	Quit();
 
 	return 0;
@@ -348,6 +360,7 @@ func double interhaptics_provider_init()
 
 		if (providerInit()) {
 			ret |= (1ULL << i);
+			g_providerInitialised[i] = true;
 		}
 	}
 	return ret;
