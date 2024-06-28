@@ -3,11 +3,18 @@
 
 #include "windows.h"
 
-std::vector<void*> g_providerHandles;
-std::vector<std::string> g_providerFilenames = {
+std::vector<HMODULE> g_providerHandles;
+const char* g_providerFilenames[] = {
 	"Interhaptics.GameInputProvider.dll",
 	"Interhaptics.RazerProvider.dll",
 };
+
+constexpr size_t numProviders = sizeof(g_providerFilenames) / sizeof(g_providerFilenames[0]);
+bool g_providerInitialised[numProviders] = {
+	false, 
+	false
+};
+
 
 bool g_isInitialised = false;
 
@@ -18,7 +25,7 @@ func double interhaptics_init()
 	g_isInitialised = Init();
 	if (g_isInitialised) {
 		for (const auto& providerFilename : g_providerFilenames) {
-			g_providerHandles.push_back((void*)LoadLibraryA(providerFilename.c_str()));
+			g_providerHandles.push_back(LoadLibraryA(providerFilename));
 		}
 	}
 
@@ -32,7 +39,7 @@ func double interhaptics_quit()
 
 	for (const auto& providerHandle : g_providerHandles)
 	{
-		FreeLibrary((HMODULE)providerHandle);
+		FreeLibrary(providerHandle);
 	}
 	g_providerHandles.clear();
 
@@ -318,25 +325,32 @@ func double interhaptics_provider_init()
 {
 	if (!g_isInitialised) return -1;
 
-	typedef void(__stdcall* f_providerInit)();
+	typedef bool(__stdcall* f_providerInit)();
 
-	for (const auto& providerHandle : g_providerHandles)
+	int64_t ret = 0;
+	for (int i = 0; i < g_providerHandles.size(); i++)
 	{
+		if (g_providerInitialised[i]) continue;
+
+		HMODULE providerHandle = g_providerHandles[i];
+
 		if (!providerHandle)
 		{
 			continue;
 		}
 
-		f_providerInit providerInit = (f_providerInit)GetProcAddress((HMODULE)providerHandle, "ProviderInit");
+		f_providerInit providerInit = (f_providerInit)GetProcAddress(providerHandle, "ProviderInit");
 
 		if (!providerInit)
 		{
 			continue;
 		}
 
-		providerInit();
+		if (providerInit()) {
+			ret |= (1ULL << i);
+		}
 	}
-	return 0;
+	return ret;
 }
 
 func double interhaptics_provider_is_present()
@@ -346,10 +360,11 @@ func double interhaptics_provider_is_present()
 	typedef bool(__stdcall* f_providerIsPresent)();
 
 	int64_t ret = 0;
-
 	for (int i = 0; i < g_providerHandles.size(); i++)
 	{
-		HMODULE providerHandle = (HMODULE)g_providerHandles[i];
+		if (!g_providerInitialised[i]) continue;
+
+		HMODULE providerHandle = g_providerHandles[i];
 
 		if (!providerHandle) {
 			continue;
@@ -373,23 +388,30 @@ func double interhaptics_provider_provider_clean()
 {
 	if (!g_isInitialised) return -1;
 
-	typedef void(__stdcall* f_providerClean)();
+	typedef bool(__stdcall* f_providerClean)();
 
-	for (const auto& providerHandle : g_providerHandles)
+	int64_t ret = 0;
+	for (int i = 0; i < g_providerHandles.size(); i++)
 	{
+		if (!g_providerInitialised[i]) continue;
+
+		HMODULE providerHandle = g_providerHandles[i];
+
 		if (!providerHandle) {
 			continue;
 		}
 
-		f_providerClean providerClean = (f_providerClean)GetProcAddress((HMODULE)providerHandle, "ProviderClean");
+		f_providerClean providerClean = (f_providerClean)GetProcAddress(providerHandle, "ProviderClean");
 
 		if (!providerClean) {
 			continue;
 		}
 
-		providerClean();
+		if (providerClean()) {
+			ret |= (1ULL << i);
+		}
 	}
-	return 0;
+	return (double)ret;
 }
 
 func double interhaptics_provider_render_haptics()
@@ -398,13 +420,17 @@ func double interhaptics_provider_render_haptics()
 
 	typedef void(__stdcall* f_providerRenderHaptics)();
 
-	for (const auto& providerHandle : g_providerHandles)
+	for (int i = 0; i < g_providerHandles.size(); i++)
 	{
+		if (!g_providerInitialised[i]) continue;
+
+		HMODULE providerHandle = g_providerHandles[i];
+
 		if (!providerHandle) {
 			continue;
 		}
 
-		f_providerRenderHaptics providerRenderHaptics = (f_providerRenderHaptics)GetProcAddress((HMODULE)providerHandle, "ProviderRenderHaptics");
+		f_providerRenderHaptics providerRenderHaptics = (f_providerRenderHaptics)GetProcAddress(providerHandle, "ProviderRenderHaptics");
 
 		if (!providerRenderHaptics) {
 			continue;
