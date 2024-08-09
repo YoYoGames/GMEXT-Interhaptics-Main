@@ -24,11 +24,13 @@
     <ClCompile Include="..\..\interhaptics_cpp\Interhaptics.cpp" />
     <ClCompile Include="..\..\interhaptics_cpp\Interhaptics_Tools.cpp" />
     <ClCompile Include="..\..\interhaptics_cpp\pch.cpp" />
+    <ClCompile Include="Interhaptics_Platform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\interhaptics_cpp\ExtBufferIO.h" />
     <ClInclude Include="..\..\interhaptics_cpp\Extension_Interface.h" />
     <ClInclude Include="..\..\interhaptics_cpp\framework.h" />
+    <ClInclude Include="..\..\interhaptics_cpp\Interhaptics_Platform.h" />
     <ClInclude Include="..\..\interhaptics_cpp\Interhaptics_Tools.h" />
     <ClInclude Include="..\..\interhaptics_cpp\pch.h" />
   </ItemGroup>
@@ -139,7 +141,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\..\..\..\interhaptics_sdk\interhaptics_windows\include;..\..\..\..\..\interhaptics_sdk\interhaptics_windows;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\interhaptics_sdk\interhaptics_windows\include;..\..\..\..\..\interhaptics_sdk\interhaptics_windows;..\..\interhaptics_cpp\;</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalHeaderUnitDependencies>
       </AdditionalHeaderUnitDependencies>
@@ -166,7 +168,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>..\..\..\..\..\interhaptics_sdk\interhaptics_windows\include;..\..\..\..\..\interhaptics_sdk\interhaptics_windows;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\interhaptics_sdk\interhaptics_windows\include;..\..\..\..\..\interhaptics_sdk\interhaptics_windows;..\..\interhaptics_cpp\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

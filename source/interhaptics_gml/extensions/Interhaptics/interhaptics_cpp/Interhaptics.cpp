@@ -1,19 +1,9 @@
 
 #include "Interhaptics_Tools.h"
-#include "windows.h"
+#include "Interhaptics_Platform.h"
 
-std::vector<HMODULE> g_providerHandles;
-const char* g_providerFilenames[] = {
-	"Interhaptics.GameInputProvider.dll",
-	"Interhaptics.RazerProvider.dll",
-};
-
-constexpr size_t numProviders = sizeof(g_providerFilenames) / sizeof(g_providerFilenames[0]);
-bool g_providerInitialised[numProviders] = {
-	false, 
-	false
-};
-
+std::vector<void*> g_providerHandles;
+std::vector<bool> g_providerInitialised;
 
 bool g_isInitialised = false;
 
@@ -23,8 +13,9 @@ void LoadProviderModules() {
 	static bool shouldLoadModules = true;
 
 	if (shouldLoadModules) {
-		for (const auto& providerFilename : g_providerFilenames) {
-			g_providerHandles.push_back(LoadLibraryA(providerFilename));
+		for (const auto& providerFilename : GetProviderFilenames()) {
+			g_providerHandles.push_back(LoadModule(providerFilename));
+			g_providerInitialised.push_back(false);
 		}
 		shouldLoadModules = false;
 	}
@@ -344,14 +335,14 @@ func double interhaptics_provider_init()
 	{
 		if (g_providerInitialised[i]) continue;
 
-		HMODULE providerHandle = g_providerHandles[i];
+		void* providerHandle = g_providerHandles[i];
 
 		if (!providerHandle)
 		{
 			continue;
 		}
 
-		f_providerInit providerInit = (f_providerInit)GetProcAddress(providerHandle, "ProviderInit");
+		f_providerInit providerInit = (f_providerInit)GetFunctionAddress(providerHandle, "ProviderInit");
 
 		if (!providerInit)
 		{
@@ -377,13 +368,13 @@ func double interhaptics_provider_is_present()
 	{
 		if (!g_providerInitialised[i]) continue;
 
-		HMODULE providerHandle = g_providerHandles[i];
+		void* providerHandle = g_providerHandles[i];
 
 		if (!providerHandle) {
 			continue;
 		}
 
-		f_providerIsPresent providerIsPresent = (f_providerIsPresent)GetProcAddress(providerHandle, "ProviderIsPresent");
+		f_providerIsPresent providerIsPresent = (f_providerIsPresent)GetFunctionAddress(providerHandle, "ProviderIsPresent");
 
 		if (!providerIsPresent) {
 			continue;
@@ -408,13 +399,13 @@ func double interhaptics_provider_provider_clean()
 	{
 		if (!g_providerInitialised[i]) continue;
 
-		HMODULE providerHandle = g_providerHandles[i];
+		void* providerHandle = g_providerHandles[i];
 
 		if (!providerHandle) {
 			continue;
 		}
 
-		f_providerClean providerClean = (f_providerClean)GetProcAddress(providerHandle, "ProviderClean");
+		f_providerClean providerClean = (f_providerClean)GetFunctionAddress(providerHandle, "ProviderClean");
 
 		if (!providerClean) {
 			continue;
@@ -437,13 +428,13 @@ func double interhaptics_provider_render_haptics()
 	{
 		if (!g_providerInitialised[i]) continue;
 
-		HMODULE providerHandle = g_providerHandles[i];
+		void* providerHandle = g_providerHandles[i];
 
 		if (!providerHandle) {
 			continue;
 		}
 
-		f_providerRenderHaptics providerRenderHaptics = (f_providerRenderHaptics)GetProcAddress(providerHandle, "ProviderRenderHaptics");
+		f_providerRenderHaptics providerRenderHaptics = (f_providerRenderHaptics)GetFunctionAddress(providerHandle, "ProviderRenderHaptics");
 
 		if (!providerRenderHaptics) {
 			continue;

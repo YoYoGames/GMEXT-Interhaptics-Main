@@ -70,7 +70,7 @@ exit 0
     :: Get library file paths
     set SDK_ENGINE="%SDK_PATH%\bin\HapticEngine\x64\HAR.dll"
     set SDK_GAMEINPUT_PROVIDER="%SDK_PATH%\bin\HapticProviders\GameInput\Interhaptics.GameInputProvider.dll"
-    set SDK_SENSA_PROVIDER="%SDK_PATH%\bin\HapticProviders\Sensa\Interhaptics.RazerProvider.dll"
+    set SDK_SENSA_PROVIDER="%SDK_PATH%\bin\HapticProviders\Sensa\x64\Interhaptics.RazerProvider.dll"
 
     :: Asset hash match
     :: call %Utils% assertFileHashEquals %SDK_CORE_SOURCE% %WIN_SDK_HASH% "%ERROR_SDK_HASH%"
