@@ -27,6 +27,12 @@ call %Utils% optionGetValue "ps4SdkPath" PS4_SDK_PATH
 call %Utils% optionGetValue "ps5SdkPath" PS5_SDK_PATH
 call %Utils% optionGetValue "switchSdkPath" SWITCH_SDK_PATH
 
+:: VS Paths
+call %Utils% optionGetValue "gdkVsPath" GDK_VS_PATH
+call %Utils% optionGetValue "ps4VsPath" PS4_VS_PATH
+call %Utils% optionGetValue "ps5VsPath" PS5_VS_PATH
+call %Utils% optionGetValue "switchVsPath" SWITCH_VS_PATH
+
 :: Error String
 set "ERROR_SDK_HASH=Invalid FMOD SDK version, sha256 hash mismatch (expected v%SDK_VERSION%)."
 
@@ -76,7 +82,38 @@ exit /b 0
 
 :: ----------------------------------------------------------------------------------------------------
 :setupPlaystation
-    :: Nothing to do here
+    :: Set building defaults
+    set "CONFIGURATION=Release-AutoBuild"
+    set "PLATFORM="
+    set "LIBRARY_NAME="
+    set "PS_SDK_PATH="
+    set "PS_VS_PATH="
+
+    :: Check correct version PS4 or PS5
+    if "%YYPLATFORM_name%"=="PlayStation 5" (
+        set "PLATFORM=Prospero"
+        set "LIBRARY_NAME=Interhaptics_ps5.prx"
+        set "PS_SDK_PATH=%PS5_SDK_PATH%"
+        set "PS_VS_PATH=%PS5_VS_PATH%"
+    ) else (
+        exit /b 0
+    )
+
+    :: Resolve the Fmod SDK path (must exist)
+    call %Utils% pathResolveExisting "%YYprojectDir%" "%PS_SDK_PATH%" PS_SDK_PATH
+
+    :: Resolve the Solution path (must exist)
+    call %Utils% pathResolveExisting "%YYprojectDir%" "%PS_VS_PATH%" PS_VS_PATH
+
+    :: Call VsDevCmd.bat and build libraries
+    call "%YYPREF_visual_studio_path%"
+    msbuild "%PS_VS_PATH%" /p:Configuration="%CONFIGURATION%" /p:Platform="%PLATFORM%" /p:ExtPath="%ExtensionPath:~0,-1%" /p:ExtSdkPath="%PS_SDK_PATH%"
+
+    :: Extract the directory part from the full path 
+    call %Utils% pathExtractDirectory "%PS_VS_PATH%" PS_VS_DIR 
+ 
+    :: Copy libs to GML project 
+    call %Utils% itemCopyTo "%PS_VS_DIR%%PLATFORM%\%CONFIGURATION%\%LIBRARY_NAME%" "%ExtensionPath%\%LIBRARY_NAME%"
 exit /b 0
 
 :: ----------------------------------------------------------------------------------------------------

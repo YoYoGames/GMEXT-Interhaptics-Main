@@ -14,9 +14,12 @@
 
 #include "ExtBufferIO.h"
 
-#ifdef OS_Windows
-#define func extern "C" __declspec(dllexport)
+#if defined(OS_Windows)
 #include "windows.h"
+#endif
+
+#if defined(OS_Windows) || defined(OS_PS4) || defined(OS_PS5) || defined(OS_GDK)
+#define func extern "C" __declspec(dllexport)
 #else
 #if defined(OS_Linux) || defined(OS_MacOs)
 #define func extern "C"

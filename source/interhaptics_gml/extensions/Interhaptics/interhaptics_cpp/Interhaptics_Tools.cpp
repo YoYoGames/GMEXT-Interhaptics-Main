@@ -1,35 +1,6 @@
 
 #include "Interhaptics_Tools.h"
 
-#if defined(OS_Windows) || defined(OS_Linux) || defined(OS_MacOs)
-
-YYRunnerInterface gs_runnerInterface;
-YYRunnerInterface* g_pYYRunnerInterface;
-
-#ifdef OS_Windows
-extern "C" __declspec(dllexport) void PreGraphicsInitialisation(char* arg1)
-#endif
-#if defined(OS_Linux) || defined(OS_MacOs)
-	extern "C" void PreGraphicsInitialisation(char* arg1)  // Mac
-#endif
-{
-}
-#endif
-
-#if defined(OS_Windows) || defined(OS_Linux) || defined(OS_MacOs)
-YYEXPORT void YYExtensionInitialise(const struct YYRunnerInterface* _pFunctions, size_t _functions_size)
-{
-	// copy out all the functions
-	memcpy(&gs_runnerInterface, _pFunctions, sizeof(YYRunnerInterface));
-	g_pYYRunnerInterface = &gs_runnerInterface;
-
-	if (_functions_size < sizeof(YYRunnerInterface))
-	{
-		DebugConsoleOutput("ERROR : runner interface mismatch in extension DLL\n ");
-	}  // end if
-}
-#endif
-
 uint64_t packIndexIntoRef(uint32_t index, uint8_t type)
 {
 	uint64_t packedValue = 0;

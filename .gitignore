@@ -23,8 +23,8 @@ source/interhaptics_gml/extensions/Interhaptics/*.nro
 source/interhaptics_gml/extensions/Interhaptics/*.nrr
 
 # FMOD SDK dependencies
-# source/interhaptics_gml/extensions/Interhaptics/**/*HAR*.*
-# source/interhaptics_gml/extensions/Interhaptics/**/*Interhaptics.XInputProvider*.*
+source/interhaptics_gml/extensions/Interhaptics/**/*HAR*.*
+source/interhaptics_gml/extensions/Interhaptics/**/*Interhaptics.*Provider*.*
 
 # YYFMOD build solutions (temp & output)
 source/interhaptics_gml/extensions/Interhaptics/interhaptics_android/out/
@@ -43,8 +43,7 @@ xcuserdata/
 .DS_Store
 
 # Allow macOS dylib placeholders
-!source/interhaptics_gml/extensions/Interhaptics/libHAR.dylib
-!source/interhaptics_gml/extensions/Interhaptics/libInterhaptics.XInputProvider.dylib
+!source/interhaptics_gml/extensions/Interhaptics/libHAR.ext
 
 # Packages output folder
 output/

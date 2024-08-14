@@ -94,10 +94,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <TargetName>$(ProjectName)_$(Platform)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)_$(Platform)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -154,7 +155,7 @@
       <AdditionalLibraryDirectories>..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticEngine\x64\;..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticProviders\GameInput\;..\..\..\..\..\interhaptics_sdk\interhaptics_windows\bin\HapticProviders\Sensa\</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y "$(TargetPath)" "$(ProjectDir)..\..\$(TargetFileName)"</Command>
+      <Command>copy /Y "$(TargetPath)" "$(ProjectDir)..\..\$(TargetFileName)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -180,7 +181,7 @@
       <AdditionalDependencies>HAR.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /Y "$(TargetPath)" "$(ProjectDir)..\..\$(TargetFileName)"</Command>
+      <Command>copy /Y "$(TargetPath)" "$(ProjectDir)..\..\$(TargetFileName)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

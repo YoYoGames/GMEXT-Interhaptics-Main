@@ -109,7 +109,27 @@ exit /b 0
 
 :: ----------------------------------------------------------------------------------------------------
 :setupPlaystation
-    :: Nothing to do here
+    :: Check correct version PS4 or PS5
+    if "%YYPLATFORM_name%"=="PlayStation 4" (
+        exit /b 0
+    ) else (
+        set PS_SDK_PATH=%PS5_SDK_PATH%
+        set PS_SDK_HASH=%PS5_SDK_HASH%
+    )
+
+    :: Resolve the SDK path (must exist)
+    call %Utils% pathResolveExisting "%YYprojectDir%" "%PS_SDK_PATH%" SDK_PATH
+
+    :: Get library file paths
+    set SDK_ENGINE="%SDK_PATH%\bin\SDK7\HapticEngine\Prospero\libHAR.prx"
+    set SDK_DUALSENSE_PROVIDER="%SDK_PATH%\bin\SDK7\HapticProviders\DualSense\libProvider_DualSensePS5.prx"
+
+    :: Asset hash match
+    :: call %Utils% assertFileHashEquals %SDK_CORE_SOURCE% %PS_SDK_HASH% "%ERROR_SDK_HASH%"
+
+    echo "Copying %YYPLATFORM_name% dependencies"
+    call %Utils% itemCopyTo %SDK_ENGINE% "libHAR.prx"
+    call %Utils% itemCopyTo %SDK_DUALSENSE_PROVIDER% "libProvider_DualSensePS5.prx"
 exit /b 0
 
 :: ----------------------------------------------------------------------------------------------------

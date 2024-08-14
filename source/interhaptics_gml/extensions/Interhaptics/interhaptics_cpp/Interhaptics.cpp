@@ -328,59 +328,33 @@ func double interhaptics_provider_init()
 {
 	if (!g_isInitialised) return -1;
 
-	typedef bool(__stdcall* f_providerInit)();
-
 	int64_t ret = 0;
 	for (int i = 0; i < g_providerHandles.size(); i++)
 	{
-		if (g_providerInitialised[i]) continue;
+		if (g_providerInitialised[i] || !g_providerHandles[i]) continue;
 
-		void* providerHandle = g_providerHandles[i];
+		void* providerInit = GetFunctionAddress(g_providerHandles[i], "ProviderInit");
 
-		if (!providerHandle)
-		{
-			continue;
-		}
-
-		f_providerInit providerInit = (f_providerInit)GetFunctionAddress(providerHandle, "ProviderInit");
-
-		if (!providerInit)
-		{
-			continue;
-		}
-
-		if (providerInit()) {
+		if (providerInit && reinterpret_cast<f_bool>(providerInit)()) {
 			ret |= (1ULL << i);
 			g_providerInitialised[i] = true;
 		}
 	}
-	return ret;
+	return (double)ret;
 }
 
 func double interhaptics_provider_is_present()
 {
 	if (!g_isInitialised) return -1;
 
-	typedef bool(__stdcall* f_providerIsPresent)();
-
 	int64_t ret = 0;
 	for (int i = 0; i < g_providerHandles.size(); i++)
 	{
-		if (!g_providerInitialised[i]) continue;
+		if (!g_providerInitialised[i] || !g_providerHandles[i]) continue;
 
-		void* providerHandle = g_providerHandles[i];
+		void* providerIsPresent = GetFunctionAddress(g_providerHandles[i], "ProviderIsPresent");
 
-		if (!providerHandle) {
-			continue;
-		}
-
-		f_providerIsPresent providerIsPresent = (f_providerIsPresent)GetFunctionAddress(providerHandle, "ProviderIsPresent");
-
-		if (!providerIsPresent) {
-			continue;
-		}
-
-		if (providerIsPresent()) {
+		if (providerIsPresent && reinterpret_cast<f_bool>(providerIsPresent)()) {
 			ret |= (1ULL << i);
 		}
 	}
@@ -392,26 +366,14 @@ func double interhaptics_provider_provider_clean()
 {
 	if (!g_isInitialised) return -1;
 
-	typedef bool(__stdcall* f_providerClean)();
-
 	int64_t ret = 0;
 	for (int i = 0; i < g_providerHandles.size(); i++)
 	{
-		if (!g_providerInitialised[i]) continue;
+		if (!g_providerInitialised[i] || !g_providerHandles[i]) continue;
 
-		void* providerHandle = g_providerHandles[i];
+		void* providerClean = GetFunctionAddress(g_providerHandles[i], "ProviderClean");
 
-		if (!providerHandle) {
-			continue;
-		}
-
-		f_providerClean providerClean = (f_providerClean)GetFunctionAddress(providerHandle, "ProviderClean");
-
-		if (!providerClean) {
-			continue;
-		}
-
-		if (providerClean()) {
+		if (providerClean && reinterpret_cast<f_bool>(providerClean)()) {
 			ret |= (1ULL << i);
 		}
 	}
@@ -420,27 +382,19 @@ func double interhaptics_provider_provider_clean()
 
 func double interhaptics_provider_render_haptics()
 {
-	if (!g_isInitialised) return -1;
+    if (!g_isInitialised) return -1;
 
-	typedef void(__stdcall* f_providerRenderHaptics)();
+    for (size_t i = 0; i < g_providerHandles.size(); i++)
+    {
+		if (!g_providerInitialised[i] || !g_providerHandles[i]) continue;
 
-	for (int i = 0; i < g_providerHandles.size(); i++)
-	{
-		if (!g_providerInitialised[i]) continue;
+        void* providerRenderHaptics = GetFunctionAddress(g_providerHandles[i], "ProviderRenderHaptics");
 
-		void* providerHandle = g_providerHandles[i];
+        if (providerRenderHaptics)
+        {
+			reinterpret_cast<f_void>(providerRenderHaptics)();
+        }
+    }
 
-		if (!providerHandle) {
-			continue;
-		}
-
-		f_providerRenderHaptics providerRenderHaptics = (f_providerRenderHaptics)GetFunctionAddress(providerHandle, "ProviderRenderHaptics");
-
-		if (!providerRenderHaptics) {
-			continue;
-		}
-
-		providerRenderHaptics();
-	}
-	return 0;
+    return 0;
 }
