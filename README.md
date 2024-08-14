@@ -7,7 +7,7 @@ This repository was created with the intent of presenting users with the latest 
 This extension will work on Windows.
 
 * Source: `source/Interhaptics_gml/extensions/Interhaptics/interhaptics_cpp/`
-* Windows: `source/steamworks_gml/extensions/steamworks/interhaptics_windows/`
+* Windows: `source/steamworks_gml/extensions/Interhaptics/interhaptics_windows/`
 
 > [!NOTE]
 > More platforms will be available at a later stage.
