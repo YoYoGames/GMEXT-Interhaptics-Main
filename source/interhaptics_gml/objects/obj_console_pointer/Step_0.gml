@@ -26,15 +26,12 @@ if(gamepad_is_connected(a))
 		{
 			if(gamepad_button_check_pressed(a, gp_face1))
 			{
-				show_debug_message(a)
-				show_debug_message("pressed")
 				pressed = true
 				event_perform(ev_mouse, ev_left_press);
 			}
 	
 			if(gamepad_button_check_released(a, gp_face1))
 			{
-				show_debug_message("released")
 				released = true
 				event_perform(ev_mouse, ev_left_release);
 			}

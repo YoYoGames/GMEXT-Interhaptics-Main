@@ -35,9 +35,9 @@ You can then add one or more targets for this haptics effect:
 ```gml
 var _commanddata =
 {
-    sign: Interhaptics_Operator.Plus,
-    group: Interhaptics_GroupID.Palm,
-    side: Interhaptics_LateralFlag.Global
+    sign: INTERHAPTICS_OPERATOR.PLUS,
+    group: INTERHAPTICS_GROUP_ID.PALM,
+    side: INTERHAPTICS_LATERAL_FLAG.GLOBAL
 };
 
 interhaptics_add_target_to_event(hm_index, [_commanddata]);

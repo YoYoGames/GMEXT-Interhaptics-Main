@@ -2,21 +2,21 @@
 event_inherited();
 
 array = [
-	"UnknowPosition",
-	"Global",
-	"Right",
-	"Left",
-	"Center"
+	"UNKNOWN_POSITION",
+	"GLOBAL",
+	"RIGHT",
+	"LEFT",
+	"CENTER"
 	]
 
 index = 1
 
 array_value = [
-	Interhaptics_LateralFlag.UnknowPosition,
-	Interhaptics_LateralFlag.Global,
-	Interhaptics_LateralFlag.Right,
-	Interhaptics_LateralFlag.Left,
-	Interhaptics_LateralFlag.Center
+	INTERHAPTICS_LATERAL_FLAG.UNKNOWN_POSITION,
+	INTERHAPTICS_LATERAL_FLAG.GLOBAL,
+	INTERHAPTICS_LATERAL_FLAG.RIGHT,
+	INTERHAPTICS_LATERAL_FLAG.LEFT,
+	INTERHAPTICS_LATERAL_FLAG.CENTER
 	]
 
 

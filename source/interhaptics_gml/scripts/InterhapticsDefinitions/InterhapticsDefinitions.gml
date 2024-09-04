@@ -1,54 +1,62 @@
 
-enum Interhaptics_Operator
+enum INTERHAPTICS_OPERATOR
 {
-	Minus = -1,
-	Neutral = 0,
-	Plus = 1,
+	MINUS = -1,
+	NEUTRAL = 0,
+	PLUS = 1,
 }
 
-enum Interhaptics_LateralFlag
+enum INTERHAPTICS_LATERAL_FLAG
 {
-	UnknowPosition = -1,
-	Global = 0,
-	Right = 1,
-	Left = 2,
-	Center = 3
+	UNKNOWN_POSITION = -1,
+	GLOBAL = 0,
+	RIGHT = 1,
+	LEFT = 2,
+	CENTER = 3
 };
 
-enum Interhaptics_GroupID
+enum INTERHAPTICS_GROUP_ID
 {
-	Unknown = -1,
-	All = 0,
-	Top = 100,
-	Down = 101,
-	Arm = 200,
-	Head = 201,
-	Chest = 202,
-	Waist = 203,
-	Leg = 204,
-	Upper_arm = 300,
-	Lower_arm = 301,
-	Hand = 302,
-	Skull = 303,
-	Neck = 304,
-	Upper_leg = 305,
-	Lower_leg = 306,
-	Foot = 307,
-	Palm = 400,
-	Finger = 401,
-	Sole = 402,
-	Toe = 403,
-	Thumb = 500,
-	Index = 501,
-	Middle = 502,
-	Ring = 503,
-	Pinky = 504,
-	Hallux = 505,
-	Index_toe = 506,
-	Middle_toe = 507,
-	Ring_toe = 508,
-	Pinky_toe = 509,
-	First = 600,
-	Second = 601,
-	Third = 602,
+	UNKNOWN = -1,
+	ALL = 0,
+	TOP = 100,
+	DOWN = 101,
+	ARM = 200,
+	HEAD = 201,
+	CHEST = 202,
+	WAIST = 203,
+	LEG = 204,
+	UPPER_ARM = 300,
+	LOWER_ARM = 301,
+	HAND = 302,
+	SKULL = 303,
+	NECK = 304,
+	UPPER_LEG = 305,
+	LOWER_LEG = 306,
+	FOOT = 307,
+	PALM = 400,
+	FINGER = 401,
+	SOLE = 402,
+	TOE = 403,
+	THUMB = 500,
+	INDEX = 501,
+	MIDDLE = 502,
+	RING = 503,
+	PINKY = 504,
+	HALLUX = 505,
+	INDEX_TOE = 506,
+	MIDDLE_TOE = 507,
+	RING_TOE = 508,
+	PINKY_TOE = 509,
+	FIRST = 600,
+	SECOND = 601,
+	THIRD = 602,
 };
+
+enum INTERHAPTICS_PROVIDER
+{
+	GAME_INPUT = 1,
+	SENSA = 2,
+	DUAL_SENSE = 4,
+}
+

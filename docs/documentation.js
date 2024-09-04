@@ -296,75 +296,75 @@ function interhaptics_provider_render_haptics() {}
 // Constants
 
 /**
- * @const Interhaptics_Operator
- * @desc > **Interhaptics Constant** [Interhaptics_Operator](https://www.interhaptics.com/doc/interhaptics-engine/#operator)
+ * @const INTERHAPTICS_OPERATOR
+ * @desc > **Interhaptics Constant** [INTERHAPTICS_OPERATOR](https://www.interhaptics.com/doc/interhaptics-engine/#operator)
  *
  * <br />
  *
  * This enum represents operators used in the haptic body mapping. The possible values are:
- * @member Minus Represents a minus operator (-1)
- * @member Neutral Represents a neutral operator (0)
- * @member Plus Represents a plus operator (1)
+ * @member MINUS Represents a minus operator (-1)
+ * @member NEUTRAL Represents a neutral operator (0)
+ * @member PLUS Represents a plus operator (1)
  * @const_end
  */
  
  
 /**
- * @const Interhaptics_LateralFlag
- * @desc > **Interhaptics Constant** [Interhaptics_LateralFlag](https://www.interhaptics.com/doc/interhaptics-engine/#lateralflag)
+ * @const INTERHAPTICS_LATERAL_FLAG
+ * @desc > **Interhaptics Constant** [INTERHAPTICS_LATERAL_FLAG](https://www.interhaptics.com/doc/interhaptics-engine/#lateralflag)
  *
  * <br />
  *
  * This enum represents the lateral position of a body part. The possible values are:
  * @member UnknownPosition Represents an unknown position. (-1)
- * @member Global Represents the global position. (0)
- * @member Right Represents the right position. (1)
- * @member Left Represents the left position. (2)
- * @member Center Represents the center position. (3)
+ * @member GLOBAL Represents the global position. (0)
+ * @member RIGHT Represents the right position. (1)
+ * @member LEFT Represents the left position. (2)
+ * @member CENTER Represents the center position. (3)
  * @const_end
  */
  
  /**
- * @const Interhaptics_GroupID
- * @desc > **Interhaptics Constant** [Interhaptics_GroupID](https://www.interhaptics.com/doc/interhaptics-engine/#groupid)
+ * @const INTERHAPTICS_GROUP_ID
+ * @desc > **Interhaptics Constant** [INTERHAPTICS_GROUP_ID](https://www.interhaptics.com/doc/interhaptics-engine/#groupid)
  *
  * <br />
  *
  * The GroupID enum represents the group IDs for different body parts. Each group has a unique ID assigned to it for grouping purposes. The following are some of the groups and their corresponding IDs:
- * @member Unknown Represents an unknown group. ID -1
- * @member All Represents all body parts. ID 0
- * @member Top Represents the top portion of the body. ID 100
- * @member Down Represents the lower portion of the body. ID 101
- * @member Arm Represents the arm group. ID 200
- * @member Head Represents the head group. ID 201
- * @member Chest Represents the chest group. ID 202
- * @member Waist Represents the waist group. ID 203
- * @member Leg Represents the leg group. ID 204
- * @member Upper_arm Represents the upper arm group. ID 300
- * @member Lower_arm Represents the lower arm group. ID 301
- * @member Hand Represents the hand group. ID 302
- * @member Skull Represents the skull group. ID 303
- * @member Neck Represents the neck group. ID 304
- * @member Upper_leg Represents the upper leg group. ID 305
- * @member Lower_leg Represents the lower leg group. ID 306
- * @member Foot Represents the foot group. ID 307
- * @member Palm Represents the palm group. ID 400
- * @member Finger Represents the finger group. ID 401
- * @member Sole Represents the sole group. ID 402
- * @member Toe Represents the toe group. ID 403
- * @member Thumb Represents the thumb group. ID 500
- * @member Index Represents the index finger group. ID 501
- * @member Middle Represents the middle finger group. ID 502
- * @member Ring Represents the ring finger group. ID 503
- * @member Pinky Represents the pinky finger group. ID 504
- * @member Hallux Represents the hallux group. ID 505
- * @member Index_toe Represents the index toe group. ID 506
- * @member Middle_toe Represents the middle toe group. ID 507
- * @member Ring_toe Represents the ring toe group. ID 508
- * @member Pinky_toe Represents the pinky toe group. ID 509
- * @member First Represents the first segment group. ID 600
- * @member Second Represents the second segment group. ID 601
- * @member Third Represents the third segment group. ID 602
+ * @member UNKNOWN Represents an unknown group. ID -1
+ * @member ALL Represents all body parts. ID 0
+ * @member TOP Represents the top portion of the body. ID 100
+ * @member DOWN Represents the lower portion of the body. ID 101
+ * @member ARM Represents the arm group. ID 200
+ * @member HEAD Represents the head group. ID 201
+ * @member CHEST Represents the chest group. ID 202
+ * @member WAIST Represents the waist group. ID 203
+ * @member LEG Represents the leg group. ID 204
+ * @member UPPER_ARM Represents the upper arm group. ID 300
+ * @member LOWER_ARM Represents the lower arm group. ID 301
+ * @member HAND Represents the hand group. ID 302
+ * @member SKULL Represents the skull group. ID 303
+ * @member NECK Represents the neck group. ID 304
+ * @member UPPER_LEG Represents the upper leg group. ID 305
+ * @member LOWER_LEG Represents the lower leg group. ID 306
+ * @member FOOT Represents the foot group. ID 307
+ * @member PALM Represents the palm group. ID 400
+ * @member FINGER Represents the finger group. ID 401
+ * @member SOLE Represents the sole group. ID 402
+ * @member TOE Represents the toe group. ID 403
+ * @member THUMB Represents the thumb group. ID 500
+ * @member INDEX Represents the index finger group. ID 501
+ * @member MIDDLE Represents the middle finger group. ID 502
+ * @member RING Represents the ring finger group. ID 503
+ * @member PINKY Represents the pinky finger group. ID 504
+ * @member HALLUX Represents the hallux group. ID 505
+ * @member INDEX_TOE Represents the index toe group. ID 506
+ * @member MIDDLE_TOE Represents the middle toe group. ID 507
+ * @member RING_TOE Represents the ring toe group. ID 508
+ * @member PINKY_TOE Represents the pinky toe group. ID 509
+ * @member FIRST Represents the first segment group. ID 600
+ * @member SECOND Represents the second segment group. ID 601
+ * @member THIRD Represents the third segment group. ID 602
  * @const_end
  */
  
@@ -375,9 +375,9 @@ function interhaptics_provider_render_haptics() {}
  * <br />
  *
  * This structure represents an instruction that is useful for finding the body part to render. It contains the following members:
- * @member Sign {constant.Interhaptics_Operator} Represents the sign of the operation (+/-) of type Operator.
- * @member Group {constant.Interhaptics_GroupID} Represents the group targeted of type ${constant.Interhaptics_GroupID}.
- * @member Side {constant.Interhaptics_LateralFlag} Represents the side targeted of type ${constant.Interhaptics_LateralFlag}.
+ * @member Sign {constant.INTERHAPTICS_OPERATOR} Represents the sign of the operation (+/-) of type Operator.
+ * @member Group {constant.INTERHAPTICS_GROUP_ID} Represents the group targeted of type ${constant.INTERHAPTICS_GROUP_ID}.
+ * @member Side {constant.INTERHAPTICS_LATERAL_FLAG} Represents the side targeted of type ${constant.INTERHAPTICS_LATERAL_FLAG}.
  * @struct_end
  */
  
@@ -495,9 +495,9 @@ function interhaptics_provider_render_haptics() {}
  * 
  * @section_const Constants
  * @desc The following are the constants that the Interhaptics extension defines. All of them are defined as an enum.
- * @ref Interhaptics_Operator
- * @ref Interhaptics_LateralFlag
- * @ref Interhaptics_GroupID
+ * @ref INTERHAPTICS_OPERATOR
+ * @ref INTERHAPTICS_LATERAL_FLAG
+ * @ref INTERHAPTICS_GROUP_ID
  * @section_end
  *
  * @section_struct Structs

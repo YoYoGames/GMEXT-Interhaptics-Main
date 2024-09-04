@@ -19,24 +19,24 @@ hm_index = interhaptics_add_hm(content)
 
 interhaptics_add_target_to_event(hm_index,[
 	{
-        sign: Interhaptics_Operator.Plus,
-        group: Interhaptics_GroupID.Palm,
-        side: Interhaptics_LateralFlag.Global
+        sign: INTERHAPTICS_OPERATOR.PLUS,
+        group: INTERHAPTICS_GROUP_ID.PALM,
+        side: INTERHAPTICS_LATERAL_FLAG.GLOBAL
 		
-        //sign: Interhaptics_Operator.Plus,
-        //group: Interhaptics_GroupID.Palm,
-        //side: Interhaptics_LateralFlag.Left
+        //sign: INTERHAPTICS_OPERATOR.PLUS,
+        //group: INTERHAPTICS_GROUP_ID.PALM,
+        //side: INTERHAPTICS_LATERAL_FLAG.LEFT
 	}]);
 	
 	
 //interhaptics_add_target_to_event(hm_index,[
 //{
-//		sign: Interhaptics_Operator.Neutral,
-//		group: Interhaptics_GroupID.All,
-//		side: Interhaptics_LateralFlag.Center
+//		sign: INTERHAPTICS_OPERATOR.NEUTRAL,
+//		group: INTERHAPTICS_GROUP_ID.ALL,
+//		side: INTERHAPTICS_LATERAL_FLAG.CENTER
 //	},
 //	{
-//		sign: Interhaptics_Operator.Plus,
-//		group: Interhaptics_GroupID.Chest,
-//		side: Interhaptics_LateralFlag.Right
+//		sign: INTERHAPTICS_OPERATOR.PLUS,
+//		group: INTERHAPTICS_GROUP_ID.CHEST,
+//		side: INTERHAPTICS_LATERAL_FLAG.RIGHT
 //	}])
