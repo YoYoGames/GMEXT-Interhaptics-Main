@@ -43,6 +43,14 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="setup.html">Setting Up</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="basic_use.html">Basic Use</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="engine_control.html">Engine Control</a>
                 </li>
               </ul>
@@ -55,7 +63,7 @@
                 </li>
               </ul>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="shared_types.html">Shared Types</a>
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Shared Types</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
     </li>
@@ -96,9 +104,9 @@
 <h2 id="constants">Constants</h2>
 <p>The following are the constants that the Interhaptics extension defines. All of them are defined as an enum.</p>
 <ul>
-<li><a href="shared_types.html#interhaptics_operator">Interhaptics_Operator</a></li>
-<li><a href="shared_types.html#interhaptics_lateralflag">Interhaptics_LateralFlag</a></li>
-<li><a href="shared_types.html#interhaptics_groupid">Interhaptics_GroupID</a></li>
+<li><a href="shared_types.html#interhaptics_operator">INTERHAPTICS_OPERATOR</a></li>
+<li><a href="shared_types.html#interhaptics_lateral_flag">INTERHAPTICS_LATERAL_FLAG</a></li>
+<li><a href="shared_types.html#interhaptics_group_id">INTERHAPTICS_GROUP_ID</a></li>
 </ul>
 <h2 id="structs">Structs</h2>
 <p>The Interhaptics extension also defines a <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a>:</p>
@@ -109,9 +117,9 @@
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="interhaptics_operator">Interhaptics_Operator</h1>
+<h1 id="interhaptics_operator">INTERHAPTICS_OPERATOR</h1>
 <blockquote>
-<p><strong>Interhaptics Constant</strong> <a href="https://www.interhaptics.com/doc/interhaptics-engine/#operator">Interhaptics_Operator</a></p>
+<p><strong>Interhaptics Constant</strong> <a href="https://www.interhaptics.com/doc/interhaptics-engine/#operator">INTERHAPTICS_OPERATOR</a></p>
 </blockquote>
 <p><br /></p>
 <p>This enum represents operators used in the haptic body mapping. The possible values are:</p>
@@ -125,15 +133,15 @@
 </thead>
 <tbody>
 <tr>
-<td><code>Minus</code></td>
+<td><code>MINUS</code></td>
 <td>Represents a minus operator (-1)</td>
 </tr>
 <tr>
-<td><code>Neutral</code></td>
+<td><code>NEUTRAL</code></td>
 <td>Represents a neutral operator (0)</td>
 </tr>
 <tr>
-<td><code>Plus</code></td>
+<td><code>PLUS</code></td>
 <td>Represents a plus operator (1)</td>
 </tr>
 </tbody>
@@ -142,9 +150,9 @@
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="interhaptics_lateralflag">Interhaptics_LateralFlag</h1>
+<h1 id="interhaptics_lateral_flag">INTERHAPTICS_LATERAL_FLAG</h1>
 <blockquote>
-<p><strong>Interhaptics Constant</strong> <a href="https://www.interhaptics.com/doc/interhaptics-engine/#lateralflag">Interhaptics_LateralFlag</a></p>
+<p><strong>Interhaptics Constant</strong> <a href="https://www.interhaptics.com/doc/interhaptics-engine/#lateralflag">INTERHAPTICS_LATERAL_FLAG</a></p>
 </blockquote>
 <p><br /></p>
 <p>This enum represents the lateral position of a body part. The possible values are:</p>
@@ -162,19 +170,19 @@
 <td>Represents an unknown position. (-1)</td>
 </tr>
 <tr>
-<td><code>Global</code></td>
+<td><code>GLOBAL</code></td>
 <td>Represents the global position. (0)</td>
 </tr>
 <tr>
-<td><code>Right</code></td>
+<td><code>RIGHT</code></td>
 <td>Represents the right position. (1)</td>
 </tr>
 <tr>
-<td><code>Left</code></td>
+<td><code>LEFT</code></td>
 <td>Represents the left position. (2)</td>
 </tr>
 <tr>
-<td><code>Center</code></td>
+<td><code>CENTER</code></td>
 <td>Represents the center position. (3)</td>
 </tr>
 </tbody>
@@ -183,12 +191,12 @@
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="interhaptics_groupid">Interhaptics_GroupID</h1>
+<h1 id="interhaptics_group_id">INTERHAPTICS_GROUP_ID</h1>
 <blockquote>
-<p><strong>Interhaptics Constant</strong> <a href="https://www.interhaptics.com/doc/interhaptics-engine/#groupid">Interhaptics_GroupID</a></p>
+<p><strong>Interhaptics Constant</strong> <a href="https://www.interhaptics.com/doc/interhaptics-engine/#groupid">INTERHAPTICS_GROUP_ID</a></p>
 </blockquote>
 <p><br /></p>
-<p>The GroupID enum represents the group IDs for different body parts. Each group has a unique ID assigned to it for grouping purposes. The following are some of the groups and their corresponding IDs</p>
+<p>The GroupID enum represents the group IDs for different body parts. Each group has a unique ID assigned to it for grouping purposes. The following are some of the groups and their corresponding IDs:</p>
 <p><br></p>
 <table>
 <thead>
@@ -199,139 +207,139 @@
 </thead>
 <tbody>
 <tr>
-<td><code>Unknown</code></td>
+<td><code>UNKNOWN</code></td>
 <td>Represents an unknown group. ID -1</td>
 </tr>
 <tr>
-<td><code>All</code></td>
+<td><code>ALL</code></td>
 <td>Represents all body parts. ID 0</td>
 </tr>
 <tr>
-<td><code>Top</code></td>
+<td><code>TOP</code></td>
 <td>Represents the top portion of the body. ID 100</td>
 </tr>
 <tr>
-<td><code>Down</code></td>
+<td><code>DOWN</code></td>
 <td>Represents the lower portion of the body. ID 101</td>
 </tr>
 <tr>
-<td><code>Arm</code></td>
+<td><code>ARM</code></td>
 <td>Represents the arm group. ID 200</td>
 </tr>
 <tr>
-<td><code>Head</code></td>
+<td><code>HEAD</code></td>
 <td>Represents the head group. ID 201</td>
 </tr>
 <tr>
-<td><code>Chest</code></td>
+<td><code>CHEST</code></td>
 <td>Represents the chest group. ID 202</td>
 </tr>
 <tr>
-<td><code>Waist</code></td>
+<td><code>WAIST</code></td>
 <td>Represents the waist group. ID 203</td>
 </tr>
 <tr>
-<td><code>Leg</code></td>
+<td><code>LEG</code></td>
 <td>Represents the leg group. ID 204</td>
 </tr>
 <tr>
-<td><code>Upper_arm</code></td>
+<td><code>UPPER_ARM</code></td>
 <td>Represents the upper arm group. ID 300</td>
 </tr>
 <tr>
-<td><code>Lower_arm</code></td>
+<td><code>LOWER_ARM</code></td>
 <td>Represents the lower arm group. ID 301</td>
 </tr>
 <tr>
-<td><code>Hand</code></td>
+<td><code>HAND</code></td>
 <td>Represents the hand group. ID 302</td>
 </tr>
 <tr>
-<td><code>Skull</code></td>
+<td><code>SKULL</code></td>
 <td>Represents the skull group. ID 303</td>
 </tr>
 <tr>
-<td><code>Neck</code></td>
+<td><code>NECK</code></td>
 <td>Represents the neck group. ID 304</td>
 </tr>
 <tr>
-<td><code>Upper_leg</code></td>
+<td><code>UPPER_LEG</code></td>
 <td>Represents the upper leg group. ID 305</td>
 </tr>
 <tr>
-<td><code>Lower_leg</code></td>
+<td><code>LOWER_LEG</code></td>
 <td>Represents the lower leg group. ID 306</td>
 </tr>
 <tr>
-<td><code>Foot</code></td>
+<td><code>FOOT</code></td>
 <td>Represents the foot group. ID 307</td>
 </tr>
 <tr>
-<td><code>Palm</code></td>
+<td><code>PALM</code></td>
 <td>Represents the palm group. ID 400</td>
 </tr>
 <tr>
-<td><code>Finger</code></td>
+<td><code>FINGER</code></td>
 <td>Represents the finger group. ID 401</td>
 </tr>
 <tr>
-<td><code>Sole</code></td>
+<td><code>SOLE</code></td>
 <td>Represents the sole group. ID 402</td>
 </tr>
 <tr>
-<td><code>Toe</code></td>
+<td><code>TOE</code></td>
 <td>Represents the toe group. ID 403</td>
 </tr>
 <tr>
-<td><code>Thumb</code></td>
+<td><code>THUMB</code></td>
 <td>Represents the thumb group. ID 500</td>
 </tr>
 <tr>
-<td><code>Index</code></td>
+<td><code>INDEX</code></td>
 <td>Represents the index finger group. ID 501</td>
 </tr>
 <tr>
-<td><code>Middle</code></td>
+<td><code>MIDDLE</code></td>
 <td>Represents the middle finger group. ID 502</td>
 </tr>
 <tr>
-<td><code>Ring</code></td>
+<td><code>RING</code></td>
 <td>Represents the ring finger group. ID 503</td>
 </tr>
 <tr>
-<td><code>Pinky</code></td>
+<td><code>PINKY</code></td>
 <td>Represents the pinky finger group. ID 504</td>
 </tr>
 <tr>
-<td><code>Hallux</code></td>
+<td><code>HALLUX</code></td>
 <td>Represents the hallux group. ID 505</td>
 </tr>
 <tr>
-<td><code>Index_toe</code></td>
+<td><code>INDEX_TOE</code></td>
 <td>Represents the index toe group. ID 506</td>
 </tr>
 <tr>
-<td><code>Middle_toe</code></td>
+<td><code>MIDDLE_TOE</code></td>
 <td>Represents the middle toe group. ID 507</td>
 </tr>
 <tr>
-<td><code>Ring_toe</code></td>
+<td><code>RING_TOE</code></td>
 <td>Represents the ring toe group. ID 508</td>
 </tr>
 <tr>
-<td><code>Pinky_toe</code></td>
+<td><code>PINKY_TOE</code></td>
 <td>Represents the pinky toe group. ID 509</td>
 </tr>
 <tr>
-<td><code>First</code></td>
+<td><code>FIRST</code></td>
 <td>Represents the first segment group. ID 600</td>
 </tr>
 <tr>
-<td><code>Second</code></td>
+<td><code>SECOND</code></td>
 <td>Represents the second segment group. ID 601</td>
 </tr>
 <tr>
-<td><code>Third</code></td>
+<td><code>THIRD</code></td>
 <td>Represents the third segment group. ID 602</td>
 </tr>
 </tbody>
@@ -351,6 +359,7 @@
 <li><a href="engine_events.html#interhaptics_add_target_to_event">interhaptics_add_target_to_event</a></li>
 <li><a href="engine_events.html#interhaptics_remove_target_from_event">interhaptics_remove_target_from_event</a></li>
 <li><a href="engine_events.html#interhaptics_update_event_positions">interhaptics_update_event_positions</a></li>
+<li><a href="engine_events.html#interhaptics_set_target_intensity">interhaptics_set_target_intensity</a></li>
 </ul>
 <p><br></p>
 <table>
@@ -365,17 +374,17 @@
 <tr>
 <td>Sign</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Any</a></td>
-<td>{constant.Interhaptics_Operator} Represents the sign of the operation (+/-) of type Operator.</td>
+<td>{constant.INTERHAPTICS_OPERATOR} Represents the sign of the operation (+/-) of type Operator.</td>
 </tr>
 <tr>
 <td>Group</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Any</a></td>
-<td>{constant.Interhaptics_GroupID} Represents the group targeted of type <a href="shared_types.html#interhaptics_groupid">Interhaptics_GroupID</a>.</td>
+<td>{constant.INTERHAPTICS_GROUP_ID} Represents the group targeted of type <a href="shared_types.html#interhaptics_group_id">INTERHAPTICS_GROUP_ID</a>.</td>
 </tr>
 <tr>
 <td>Side</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Any</a></td>
-<td>{constant.Interhaptics_LateralFlag} Represents the side targeted of type <a href="shared_types.html#interhaptics_lateralflag">Interhaptics_LateralFlag</a>.</td>
+<td>{constant.INTERHAPTICS_LATERAL_FLAG} Represents the side targeted of type <a href="shared_types.html#interhaptics_lateral_flag">INTERHAPTICS_LATERAL_FLAG</a>.</td>
 </tr>
 </tbody>
 </table>

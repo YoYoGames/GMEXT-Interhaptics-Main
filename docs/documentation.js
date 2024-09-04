@@ -388,7 +388,7 @@ function interhaptics_provider_render_haptics() {}
   * 
   * Interhaptics is a software that allows you to design, test, and play haptic effects.
   * 
-  * To create your own haptic effects for use with Interhaptics you can use the [Haptic Composer](www.interhaptics.com/doc/haptic-composer) tool, which includes an [Audio to Haptic](https://www.interhaptics.com/doc/haptic-composer/#audio-to-haptics-settings) feature to generate a haptic effect from audio.
+  * To create your own haptic effects for use with Interhaptics you can use the [Haptic Composer](https://www.interhaptics.com/doc/haptic-composer) tool, which includes an [Audio to Haptic](https://www.interhaptics.com/doc/haptic-composer/#audio-to-haptics-settings) feature to generate a haptic effect from audio.
   * 
   * [[Note: This extension is only supported on Windows.]]
   * 

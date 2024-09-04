@@ -43,11 +43,19 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="setup.html">Setting Up</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="basic_use.html">Basic Use</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="engine_control.html">Engine Control</a>
                 </li>
               </ul>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="engine_events.html">Engine Events</a>
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Engine Events</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
     </li>
@@ -96,12 +104,16 @@
 <ul>
 <li><a href="engine_events.html#interhaptics_play_event">interhaptics_play_event</a></li>
 <li><a href="engine_events.html#interhaptics_stop_event">interhaptics_stop_event</a></li>
+<li><a href="engine_events.html#interhaptics_stop_all_events">interhaptics_stop_all_events</a></li>
 <li><a href="engine_events.html#interhaptics_add_target_to_event">interhaptics_add_target_to_event</a></li>
 <li><a href="engine_events.html#interhaptics_remove_target_from_event">interhaptics_remove_target_from_event</a></li>
 <li><a href="engine_events.html#interhaptics_remove_all_targets_from_event">interhaptics_remove_all_targets_from_event</a></li>
 <li><a href="engine_events.html#interhaptics_compute_all_events">interhaptics_compute_all_events</a></li>
 <li><a href="engine_events.html#interhaptics_update_event_positions">interhaptics_update_event_positions</a></li>
 <li><a href="engine_events.html#interhaptics_set_event_offsets">interhaptics_set_event_offsets</a></li>
+<li><a href="engine_events.html#interhaptics_set_event_intensity">interhaptics_set_event_intensity</a></li>
+<li><a href="engine_events.html#interhaptics_set_event_loop">interhaptics_set_event_loop</a></li>
+<li><a href="engine_events.html#interhaptics_set_target_intensity">interhaptics_set_target_intensity</a></li>
 <li><a href="engine_events.html#interhaptics_clear_inactive_events">interhaptics_clear_inactive_events</a></li>
 <li><a href="engine_events.html#interhaptics_clear_active_events">interhaptics_clear_active_events</a></li>
 <li><a href="engine_events.html#interhaptics_clear_event">interhaptics_clear_event</a></li>
@@ -152,6 +164,8 @@ If the source does not already exist, it will be created.</p>
 </tbody>
 </table>
 <p><br></p>
+<p><br></p>
+<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
@@ -184,6 +198,27 @@ If the source does not already exist, it will be created.</p>
 </tr>
 </tbody>
 </table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="interhaptics_stop_all_events">interhaptics_stop_all_events</h1>
+<p>This function stops the rendering playback of all haptic sources.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">interhaptics_stop_all_events()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -223,6 +258,8 @@ If the source does not already exist, it will be created.</p>
 </tbody>
 </table>
 <p><br></p>
+<p><br></p>
+<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
@@ -261,6 +298,8 @@ If the source does not already exist, it will be created.</p>
 </tbody>
 </table>
 <p><br></p>
+<p><br></p>
+<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
@@ -294,6 +333,8 @@ If the source does not already exist, it will be created.</p>
 </tbody>
 </table>
 <p><br></p>
+<p><br></p>
+<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
@@ -326,6 +367,8 @@ If the source does not already exist, it will be created.</p>
 </tr>
 </tbody>
 </table>
+<p><br></p>
+<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -375,6 +418,8 @@ If the source does not already exist, it will be created.</p>
 </tbody>
 </table>
 <p><br></p>
+<p><br></p>
+<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
@@ -423,6 +468,8 @@ If the source does not already exist, it will be created.</p>
 </tbody>
 </table>
 <p><br></p>
+<p><br></p>
+<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
@@ -440,6 +487,8 @@ If the source does not already exist, it will be created.</p>
 <pre class="highlight"><code class="language-gml">interhaptics_clear_inactive_events()</code></pre>
 </blockquote>
 <p><br></p>
+<p><br></p>
+<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
@@ -456,6 +505,8 @@ If the source does not already exist, it will be created.</p>
 <blockquote>
 <pre class="highlight"><code class="language-gml">interhaptics_clear_active_events()</code></pre>
 </blockquote>
+<p><br></p>
+<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -489,6 +540,133 @@ If the source does not already exist, it will be created.</p>
 </tr>
 </tbody>
 </table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="interhaptics_set_event_intensity">interhaptics_set_event_intensity</h1>
+<p>This function sets the haptics intensity factor for a specific source.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">interhaptics_set_event_intensity(material_ref, intensity)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>material_ref</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The ID of the source, which is the same as the attached haptic effect.</td>
+</tr>
+<tr>
+<td>intensity</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The intensity factor value. Always clamped above 0.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="interhaptics_set_event_loop">interhaptics_set_event_loop</h1>
+<p>This function sets the loop flag for a specific source.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">interhaptics_set_event_loop(material_ref, number_of_loops)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>material_ref</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The ID of the source, which is the same as the attached haptic effect.</td>
+</tr>
+<tr>
+<td>number_of_loops</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of loops for the event. &lt;= 1 is one iteration.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="interhaptics_set_target_intensity">interhaptics_set_target_intensity</h1>
+<p>This function sets the haptics intensity factor for a specific target of a source.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">interhaptics_set_target_intensity(material_ref, target, intensity)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>material_ref</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The ID of the source, which is the same as the attached haptic effect.</td>
+</tr>
+<tr>
+<td>target</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="shared_types.html#interhaptics_commanddata">Interhaptics_CommandData</a></td>
+<td>The target to change intensity.</td>
+</tr>
+<tr>
+<td>intensity</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The intensity factor value. Always clamped above 0.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>

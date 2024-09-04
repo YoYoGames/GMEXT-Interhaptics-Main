@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="img/favicon.ico" />
-    <title> sidebar - GMEXT-Interhaptics</title>
+    <title>Basic Use - GMEXT-Interhaptics</title>
     <link rel="stylesheet" href="css/theme.css" />
     <link rel="stylesheet" href="css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -14,8 +14,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = " sidebar";
-        var mkdocs_page_input_path = "_sidebar.md";
+        var mkdocs_page_name = "Basic Use";
+        var mkdocs_page_input_path = "basic_use.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -46,8 +46,20 @@
                 <li class="toctree-l1"><a class="reference internal" href="setup.html">Setting Up</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="basic_use.html">Basic Use</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Basic Use</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#initialisation">Initialisation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#loading-haps-files">Loading .haps Files</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#updating-interhaptics">Updating Interhaptics</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#playing-a-haptic-effect">Playing A Haptic Effect</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cleaning-up">Cleaning Up</a>
+    </li>
+    </ul>
                 </li>
               </ul>
               <ul>
@@ -80,9 +92,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active"> sidebar</li>
+      <li class="breadcrumb-item active">Basic Use</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/YoYoGames/GMEXT-Interhaptics/edit/master/docs/_sidebar.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/YoYoGames/GMEXT-Interhaptics/edit/master/docs/basic_use.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -90,22 +102,52 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="interhaptics-extension"><a href="home.html">Interhaptics Extension</a></h2>
-<h3 id="guides">Guides</h3>
-<ul>
-<li><a href="setup.html">Setting Up</a></li>
-<li><a href="basic_use.html">Basic Use</a></li>
-</ul>
-<h3 id="modules">Modules</h3>
-<ul>
-<li><a href="engine_control.html">Engine Control</a></li>
-<li><a href="engine_events.html">Engine Events</a></li>
-<li><a href="providers.html">Providers</a></li>
-<li><a href="shared_types.html">Shared Types</a></li>
-</ul>
+                <h1 id="basic-use">Basic Use</h1>
+<p>This page covers the basic use of the Interhaptics extension.</p>
+<h2 id="initialisation">Initialisation</h2>
+<p>The first thing to do is initialising the extension using <a href="engine_control.html#interhaptics_init">interhaptics_init</a>.</p>
+<p>After that, you should check for the presence of a "provider", which is an attached device (e.g. a controller) that is capable of providing haptics feedback. To initialise the provider, call <a href="providers.html#interhaptics_provider_init">interhaptics_provider_init</a>. To check if a provider is present, call <a href="providers.html#interhaptics_provider_is_present">interhaptics_provider_is_present</a>.</p>
+<pre class="highlight"><code class="language-gml">/// Create Event
+interhaptics_init();
+interhaptics_provider_init();</code></pre>
+<h2 id="loading-haps-files">Loading .haps Files</h2>
+<p>Haptics effects are stored in <code>.haps</code> files, which use a custom file format used by Interhaptics.</p>
+<p>You can add a haptics effect stored in a <code>.haps</code> file using <a href="engine_control.html#interhaptics_add_hm">interhaptics_add_hm</a>:</p>
+<pre class="highlight"><code class="language-gml">var _file = file_text_open_read("HapticMaterials/Body Hit.haps")
+var _content = file_text_read_string(_file);
+file_text_close(_file);
+
+hm_index = interhaptics_add_hm(_content);</code></pre>
+<p>You can then add one or more targets for this haptics effect:</p>
+<pre class="highlight"><code class="language-gml">var _commanddata =
+{
+    sign: INTERHAPTICS_OPERATOR.PLUS,
+    group: INTERHAPTICS_GROUP_ID.PALM,
+    side: INTERHAPTICS_LATERAL_FLAG.GLOBAL
+};
+
+interhaptics_add_target_to_event(hm_index, [_commanddata]);</code></pre>
+<h2 id="updating-interhaptics">Updating Interhaptics</h2>
+<p>To update Interhaptics, you should first compute all haptics events, then <em>render</em> the haptics every step:</p>
+<pre class="highlight"><code class="language-gml">/// Step Event
+var _time = current_time / 1000;
+
+interhaptics_compute_all_events(_time);
+interhaptics_provider_render_haptics();</code></pre>
+<h2 id="playing-a-haptic-effect">Playing A Haptic Effect</h2>
+<p>Use <a href="engine_events.html#interhaptics_play_event">interhaptics_play_event</a> to play a haptic effect:</p>
+<pre class="highlight"><code class="language-gml">interhaptics_play_event(hm_index, -time, 0, 0);</code></pre>
+<h2 id="cleaning-up">Cleaning Up</h2>
+<pre class="highlight"><code class="language-gml">/// Clean Up Event
+interhaptics_provider_provider_clean();
+interhaptics_quit();</code></pre>
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="setup.html" class="btn btn-neutral float-left" title="Setting Up"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="engine_control.html" class="btn btn-neutral float-right" title="Engine Control">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -132,6 +174,10 @@
         </span>
     
     
+      <span><a href="setup.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="engine_control.html" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

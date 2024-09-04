@@ -21,7 +21,7 @@ After extracting the SDK contents to the folder, the folder's contents should lo
 
 ## Setting Up GameMaker
 
-Download the [latest release](github.com/YoYoGames/GMEXT-Interhaptics/releases/latest) of the extension.
+Download the [latest release](https://www.github.com/YoYoGames/GMEXT-Interhaptics-Main/releases/latest) of the extension.
 
 In GameMaker, open an existing project or create a new one. Next add the extension to the project.
 

@@ -42,8 +42,16 @@
                 <li class="toctree-l1"><a class="reference internal" href="home.html">Interhaptics Extension</a>
                 </li>
               </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="setup.html">Setting Up</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="basic_use.html">Basic Use</a>
+                </li>
+              </ul>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="engine_control.html">Engine Control</a>
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Engine Control</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
     </li>
@@ -96,7 +104,11 @@
 <ul>
 <li><a href="engine_control.html#interhaptics_init">interhaptics_init</a></li>
 <li><a href="engine_control.html#interhaptics_quit">interhaptics_quit</a></li>
+<li><a href="engine_control.html#interhaptics_set_global_intensity">interhaptics_set_global_intensity</a></li>
+<li><a href="engine_control.html#interhaptics_get_global_intensity">interhaptics_get_global_intensity</a></li>
 <li><a href="engine_control.html#interhaptics_add_hm">interhaptics_add_hm</a></li>
+<li><a href="engine_control.html#interhaptics_add_parametric_effect">interhaptics_add_parametric_effect</a></li>
+<li><a href="engine_control.html#interhaptics_delete_hm">interhaptics_delete_hm</a></li>
 <li><a href="engine_control.html#interhaptics_update_hm">interhaptics_update_hm</a></li>
 </ul>
 <p><br></p>
@@ -113,6 +125,8 @@
 <blockquote>
 <pre class="highlight"><code class="language-gml">interhaptics_init()</code></pre>
 </blockquote>
+<p><br></p>
+<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
@@ -132,6 +146,8 @@ To be called before the application is quit.</p>
 <pre class="highlight"><code class="language-gml">interhaptics_quit()</code></pre>
 </blockquote>
 <p><br></p>
+<p><br></p>
+<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p>N/A</p>
@@ -141,8 +157,63 @@ To be called before the application is quit.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
+<h1 id="interhaptics_set_global_intensity">interhaptics_set_global_intensity</h1>
+<p>This function sets the global rendering intensity factor for the whole engine.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">interhaptics_set_global_intensity(intensity)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>intensity</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>A positive value. 0 is nothing. Base value is 1.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="interhaptics_get_global_intensity">interhaptics_get_global_intensity</h1>
+<p>This function gets the global rendering intensity factor for the whole engine.</p>
+<p>It returns the global intensity, or -1 if the mixer is not initialised.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">interhaptics_get_global_intensity()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
 <h1 id="interhaptics_add_hm">interhaptics_add_hm</h1>
-<p>This function adds the content of an .haps file to the Interhaptics Engine for future use. It returns a reference to the new haptics file contents to be used in other functions.</p>
+<p>This function adds the content of an .haps file to the Interhaptics Engine for future use. It returns a reference to the new haptic effect to be used in other functions.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
@@ -165,9 +236,107 @@ To be called before the application is quit.</p>
 </tbody>
 </table>
 <p><br></p>
+<p><br></p>
+<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="interhaptics_add_parametric_effect">interhaptics_add_parametric_effect</h1>
+<p>This function creates a haptic effect by processing parameters such as amplitude, pitch, and transients. This function generates a haptic effect based on the given input parameters and can optionally loop it.</p>
+<p>It returns the ID of the haptic effect created.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">interhaptics_add_parametric_effect(amplitude, pitch, freq_min, freq_max, transient, is_looping)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>amplitude</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>An array of amplitude values. Should be formatted as Time - Value pairs. Value is between 0 and 1.</td>
+</tr>
+<tr>
+<td>pitch</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>An array of pitch values. Should be formatted as Time - Value pairs. Value is between 0 and 1.</td>
+</tr>
+<tr>
+<td>freq_min</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The minimum value for the frequency range.</td>
+</tr>
+<tr>
+<td>freq_max</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The maximum value for the frequency range.</td>
+</tr>
+<tr>
+<td>transient</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>An array of transient values. The array should be formatted as Time - Amplitude - Pitch triplets, with both Amplitude and Pitch values ranging between 0 and 1.</td>
+</tr>
+<tr>
+<td>is_looping</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Indicates whether the effect should loop or not.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="interhaptics_delete_hm">interhaptics_delete_hm</h1>
+<p>This function deletes an existing haptic effect.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">interhaptics_delete_hm(material_ref)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>material_ref</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The ID of the haptic effect to delete.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
 </blockquote>
 <p><br></p>
 <p><br></p>
@@ -204,6 +373,8 @@ This can be useful when the ID of the haptic effect needs to be persistent.</p>
 </tbody>
 </table>
 <p><br></p>
+<p><br></p>
+<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
 <p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
@@ -214,7 +385,7 @@ This can be useful when the ID of the haptic effect needs to be persistent.</p>
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="home.html" class="btn btn-neutral float-left" title="Interhaptics Extension"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="basic_use.html" class="btn btn-neutral float-left" title="Basic Use"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="engine_events.html" class="btn btn-neutral float-right" title="Engine Events">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -243,7 +414,7 @@ This can be useful when the ID of the haptic effect needs to be persistent.</p>
         </span>
     
     
-      <span><a href="home.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="basic_use.html" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="engine_events.html" style="color: #fcfcfc">Next &raquo;</a></span>
