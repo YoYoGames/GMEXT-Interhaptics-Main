@@ -102,21 +102,21 @@
 <h2 id="functions">Functions</h2>
 <p>This module offers a collection of functions designed to address specific tasks and provide utilities for various purposes. Explore the available functions to make the most of the functionalities provided by this module.</p>
 <ul>
-<li><a href="providers.html#interhaptics_provider_init">interhaptics_provider_init</a></li>
-<li><a href="providers.html#interhaptics_provider_is_present">interhaptics_provider_is_present</a></li>
-<li><a href="providers.html#interhaptics_provider_provider_clean">interhaptics_provider_provider_clean</a></li>
-<li><a href="providers.html#interhaptics_provider_render_haptics">interhaptics_provider_render_haptics</a></li>
+<li><a href="providers.html#interhaptics_providers_init">interhaptics_providers_init</a></li>
+<li><a href="providers.html#interhaptics_providers_available">interhaptics_providers_available</a></li>
+<li><a href="providers.html#interhaptics_providers_clean">interhaptics_providers_clean</a></li>
+<li><a href="providers.html#interhaptics_providers_render_haptics">interhaptics_providers_render_haptics</a></li>
 </ul>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="interhaptics_provider_init">interhaptics_provider_init</h1>
+<h1 id="interhaptics_providers_init">interhaptics_providers_init</h1>
 <p>This function handles the initialisation process of the specific device's COM, its haptic settings for rendering and subscription to the Interhaptics Engine. It returns <code>false</code> if the initialisation process fails.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">interhaptics_provider_init()</code></pre>
+<pre class="highlight"><code class="language-gml">interhaptics_providers_init()</code></pre>
 </blockquote>
 <p><br></p>
 <p><br></p>
@@ -130,13 +130,13 @@
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="interhaptics_provider_is_present">interhaptics_provider_is_present</h1>
+<h1 id="interhaptics_providers_available">interhaptics_providers_available</h1>
 <p>This function checks the availability of the device before triggering haptic playback. It returns <code>true</code> if the provider is present, <code>false</code> if not.</p>
 <p>This optional step can help improve performance.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">interhaptics_provider_is_present()</code></pre>
+<pre class="highlight"><code class="language-gml">interhaptics_providers_available()</code></pre>
 </blockquote>
 <p><br></p>
 <p><br></p>
@@ -150,12 +150,12 @@
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="interhaptics_provider_provider_clean">interhaptics_provider_provider_clean</h1>
+<h1 id="interhaptics_providers_clean">interhaptics_providers_clean</h1>
 <p>This function is responsible for de-initialising the device's COM, if necessary, and for unsubscribing the provider from the Interhaptics Engine. It returns <code>false</code> if the de-initialisation process fails.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">interhaptics_provider_provider_clean()</code></pre>
+<pre class="highlight"><code class="language-gml">interhaptics_providers_clean()</code></pre>
 </blockquote>
 <p><br></p>
 <p><br></p>
@@ -169,13 +169,13 @@
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="interhaptics_provider_render_haptics">interhaptics_provider_render_haptics</h1>
+<h1 id="interhaptics_providers_render_haptics">interhaptics_providers_render_haptics</h1>
 <p>API triggers the rendering process for the provider by retrieving the necessary haptic buffers, transcoding them if required, and playing them back on the associated device. This API must be called for all targeted devices.
-It is mandatory to call <a href="engine_events.html#interhaptics_compute_all_events">interhaptics_compute_all_events</a> from the Interhaptics Engine before calling <a href="providers.html#interhaptics_provider_render_haptics">interhaptics_provider_render_haptics</a> for synchronized haptic rendering. Typically, both APIs are implemented in the same loop, with <a href="engine_events.html#interhaptics_compute_all_events">interhaptics_compute_all_events</a> called before the <a href="providers.html#interhaptics_provider_render_haptics">interhaptics_provider_render_haptics</a> calls.</p>
+It is mandatory to call <a href="engine_events.html#interhaptics_compute_all_events">interhaptics_compute_all_events</a> from the Interhaptics Engine before calling <a href="providers.html#interhaptics_providers_render_haptics">interhaptics_providers_render_haptics</a> for synchronized haptic rendering. Typically, both APIs are implemented in the same loop, with <a href="engine_events.html#interhaptics_compute_all_events">interhaptics_compute_all_events</a> called before the <a href="providers.html#interhaptics_providers_render_haptics">interhaptics_providers_render_haptics</a> calls.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">interhaptics_provider_render_haptics()</code></pre>
+<pre class="highlight"><code class="language-gml">interhaptics_providers_render_haptics()</code></pre>
 </blockquote>
 <p><br></p>
 <p><br></p>

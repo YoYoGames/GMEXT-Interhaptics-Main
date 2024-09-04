@@ -30,7 +30,7 @@ function interhaptics_update_event_positions(material_id, target_array, texture_
 	interhaptics_update_event_positions_multiplatform(material_id, _args_buffer_address, texture_position, stiffness_position)
 }
 
-function interhaptics_add_parametric_effect(amplitude_array,pitch_array,pitch_min,pitch_max,transient,is_looping)
+function interhaptics_add_parametric_effect(amplitude_array, pitch_array, pitch_min,pitch_max, transient, is_looping)
 {
 	var _args = [
 		[ amplitude_array, undefined ], // struct
@@ -44,7 +44,7 @@ function interhaptics_add_parametric_effect(amplitude_array,pitch_array,pitch_mi
 	interhaptics_add_parametric_effect_multiplatform(_args_buffer_address)
 }
 
-function interhaptics_transients_played_on_those_body_parts(perception,body_parts)
+function interhaptics_transients_played_on_those_body_parts(perception, body_parts)
 {
 	var _args = [
 		[ body_parts, undefined ], // struct
@@ -54,7 +54,7 @@ function interhaptics_transients_played_on_those_body_parts(perception,body_part
 	interhaptics_transients_played_on_those_body_parts_multiplatform(perception,_args_buffer_address)
 }
 
-function interhaptics_set_target_intensity(material_id,target_array,intensity)
+function interhaptics_set_target_intensity(material_id, target_array, intensity)
 {
 	var _args = [
 		[ target_array, undefined ], // struct

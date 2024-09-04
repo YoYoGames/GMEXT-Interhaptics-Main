@@ -1,7 +1,7 @@
 
 event_inherited();
 
-array = ["MINUS","NEUTRAL","PLUS"]
+array = ["Minus","Neutral","Plus"]
 
 index = 2
 

@@ -257,41 +257,41 @@ function interhaptics_set_target_intensity(material_ref, target, intensity) {}
 
 
 /**
- * @func interhaptics_provider_init
+ * @func interhaptics_providers_init
  * @desc This function handles the initialisation process of the specific device's COM, its haptic settings for rendering and subscription to the Interhaptics Engine. It returns `false` if the initialisation process fails.
  * @returns {boolean}
  * @func_end
  */
-function interhaptics_provider_init() {}
+function interhaptics_providers_init() {}
 
 
 /**
- * @func interhaptics_provider_is_present
+ * @func interhaptics_providers_available
  * @desc This function checks the availability of the device before triggering haptic playback. It returns `true` if the provider is present, `false` if not.
  * 
  * This optional step can help improve performance.
  * @returns {boolean}
  * @func_end
  */
-function interhaptics_provider_is_present() {}
+function interhaptics_providers_available() {}
 
 
 /**
- * @func interhaptics_provider_provider_clean
+ * @func interhaptics_providers_clean
  * @desc This function is responsible for de-initialising the device's COM, if necessary, and for unsubscribing the provider from the Interhaptics Engine. It returns `false` if the de-initialisation process fails.
  * @returns {boolean}
  * @func_end
  */
-function interhaptics_provider_provider_clean() {}
+function interhaptics_providers_clean() {}
 
 
 /**
- * @func interhaptics_provider_render_haptics
+ * @func interhaptics_providers_render_haptics
  * @desc API triggers the rendering process for the provider by retrieving the necessary haptic buffers, transcoding them if required, and playing them back on the associated device. This API must be called for all targeted devices.
- * It is mandatory to call ${function.interhaptics_compute_all_events} from the Interhaptics Engine before calling ${function.interhaptics_provider_render_haptics} for synchronized haptic rendering. Typically, both APIs are implemented in the same loop, with ${function.interhaptics_compute_all_events} called before the ${function.interhaptics_provider_render_haptics} calls.
+ * It is mandatory to call ${function.interhaptics_compute_all_events} from the Interhaptics Engine before calling ${function.interhaptics_providers_render_haptics} for synchronized haptic rendering. Typically, both APIs are implemented in the same loop, with ${function.interhaptics_compute_all_events} called before the ${function.interhaptics_providers_render_haptics} calls.
  * @func_end
  */
-function interhaptics_provider_render_haptics() {}
+function interhaptics_providers_render_haptics() {}
 
 // Constants
 
@@ -475,10 +475,10 @@ function interhaptics_provider_render_haptics() {}
   * This module contains the functions related to providers.
   * 
   * @section_func Functions
-  * @ref interhaptics_provider_init
-  * @ref interhaptics_provider_is_present
-  * @ref interhaptics_provider_provider_clean
-  * @ref interhaptics_provider_render_haptics
+  * @ref interhaptics_providers_init
+  * @ref interhaptics_providers_available
+  * @ref interhaptics_providers_clean
+  * @ref interhaptics_providers_render_haptics
   * @section_end
   * 
   * @module_end

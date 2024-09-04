@@ -8,12 +8,12 @@ This page covers the basic use of the Interhaptics extension.
 
 The first thing to do is initialising the extension using ${func.interhaptics_init}.
 
-After that, you should check for the presence of a "provider", which is an attached device (e.g. a controller) that is capable of providing haptics feedback. To initialise the provider, call ${func.interhaptics_provider_init}. To check if a provider is present, call ${func.interhaptics_provider_is_present}.
+After that, you should check for the presence of a "provider", which is an attached device (e.g. a controller) that is capable of providing haptics feedback. To initialise the provider, call ${func.interhaptics_providers_init}. To check if a provider is present, call ${func.interhaptics_providers_available}.
 
 ```gml
 /// Create Event
 interhaptics_init();
-interhaptics_provider_init();
+interhaptics_providers_init();
 ```
 
 ## Loading .haps Files
@@ -52,7 +52,7 @@ To update Interhaptics, you should first compute all haptics events, then *rende
 var _time = current_time / 1000;
 
 interhaptics_compute_all_events(_time);
-interhaptics_provider_render_haptics();
+interhaptics_providers_render_haptics();
 ```
 
 ## Playing A Haptic Effect
@@ -67,6 +67,6 @@ interhaptics_play_event(hm_index, -time, 0, 0);
 
 ```gml
 /// Clean Up Event
-interhaptics_provider_provider_clean();
+interhaptics_providers_clean();
 interhaptics_quit();
 ```

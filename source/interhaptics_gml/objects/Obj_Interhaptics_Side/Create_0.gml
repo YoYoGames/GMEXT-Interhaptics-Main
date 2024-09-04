@@ -2,12 +2,12 @@
 event_inherited();
 
 array = [
-	"UNKNOWN_POSITION",
-	"GLOBAL",
-	"RIGHT",
-	"LEFT",
-	"CENTER"
-	]
+	"Unknown Position",
+	"Global",
+	"Right",
+	"Left",
+	"Center"
+];
 
 index = 1
 
@@ -17,7 +17,7 @@ array_value = [
 	INTERHAPTICS_LATERAL_FLAG.RIGHT,
 	INTERHAPTICS_LATERAL_FLAG.LEFT,
 	INTERHAPTICS_LATERAL_FLAG.CENTER
-	]
+];
 
 
 text_group = "Side"

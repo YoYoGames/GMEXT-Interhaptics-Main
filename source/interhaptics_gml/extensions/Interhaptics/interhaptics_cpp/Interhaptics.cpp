@@ -14,7 +14,11 @@ void LoadProviderModules() {
 
 	if (shouldLoadModules) {
 		for (const auto& providerFilename : GetProviderFilenames()) {
-			g_providerHandles.push_back(LoadModule(providerFilename));
+			void* handle = nullptr;
+			if (providerFilename != nullptr) {
+				handle = LoadModule(providerFilename);
+			}
+			g_providerHandles.push_back(handle);
 			g_providerInitialised.push_back(false);
 		}
 		shouldLoadModules = false;
@@ -324,7 +328,7 @@ func double interhaptics_set_target_intensity_multiplatform(double material_ref,
 
 ///////////////////////////////////// Provider
 
-func double interhaptics_provider_init()
+func double interhaptics_providers_init()
 {
 	if (!g_isInitialised) return -1;
 
@@ -343,7 +347,7 @@ func double interhaptics_provider_init()
 	return (double)ret;
 }
 
-func double interhaptics_provider_is_present()
+func double interhaptics_providers_available()
 {
 	if (!g_isInitialised) return -1;
 
@@ -362,7 +366,7 @@ func double interhaptics_provider_is_present()
 	return (double)ret;
 }
 
-func double interhaptics_provider_provider_clean()
+func double interhaptics_providers_clean()
 {
 	if (!g_isInitialised) return -1;
 
@@ -380,7 +384,7 @@ func double interhaptics_provider_provider_clean()
 	return (double)ret;
 }
 
-func double interhaptics_provider_render_haptics()
+func double interhaptics_providers_render_haptics()
 {
     if (!g_isInitialised) return -1;
 
