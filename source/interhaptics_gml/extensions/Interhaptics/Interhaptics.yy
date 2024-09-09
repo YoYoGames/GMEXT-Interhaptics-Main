@@ -50,7 +50,7 @@
       ],"init":"","kind":1,"name":"","order":[],"origname":"","ProxyFiles":[
         {"$GMProxyFile":"","%Name":"Interhaptics_ps5.prx","name":"Interhaptics_ps5.prx","resourceType":"GMProxyFile","resourceVersion":"2.0","TargetMask":59,},
         {"$GMProxyFile":"","%Name":"Interhaptics_x64.dll","name":"Interhaptics_x64.dll","resourceType":"GMProxyFile","resourceVersion":"2.0","TargetMask":6,},
-      ],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":true,},
+      ],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":false,},
     {"$GMExtensionFile":"","%Name":"","constants":[],"copyToTargets":576460752303423488,"filename":"libHAR.ext","final":"","functions":[
         {"$GMExtensionFunction":"","%Name":"__libHAR_load__","argCount":0,"args":[],"documentation":"","externalName":"","help":"","hidden":false,"kind":4,"name":"__libHAR_load__","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
       ],"init":"__libHAR_load__","kind":4,"name":"","order":[],"origname":"","ProxyFiles":[

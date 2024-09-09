@@ -1,11 +1,4 @@
 
-#if defined(OS_Windows) || defined(OS_Linux) || defined(OS_MacOs)
-#include "Extension_Interface.h"
-
-#include "YYRValue.h"
-#include "pch.h"
-#endif
-
 #include "InterhapticsEngine.h"
 
 #include <map>
@@ -13,10 +6,6 @@
 #include <vector>
 
 #include "ExtBufferIO.h"
-
-#if defined(OS_Windows)
-#include "windows.h"
-#endif
 
 #if defined(OS_Windows) || defined(OS_PS4) || defined(OS_PS5) || defined(OS_GDK)
 #define func extern "C" __declspec(dllexport)
