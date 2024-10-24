@@ -1,4 +1,4 @@
-# GMEXT-Interhaptics
+# GMEXT-Interhaptics-Main
 
 Repository for GameMaker's Interhaptics Extension
 
