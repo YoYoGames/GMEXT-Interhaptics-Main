@@ -1,6 +1,6 @@
 {
   "$GMObject":"",
-  "%Name":"Obj_Interhaptics_Simple",
+  "%Name":"obj_interhaptics_simple",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
@@ -9,7 +9,7 @@
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":12,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"Obj_Interhaptics_Simple",
+  "name":"obj_interhaptics_simple",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",

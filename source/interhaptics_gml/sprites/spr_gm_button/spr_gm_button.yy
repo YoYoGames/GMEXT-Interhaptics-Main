@@ -47,7 +47,7 @@
   "origin":4,
   "parent":{
     "name":"Sprites",
-    "path":"folders/GM Extensions Assets/Sprites.yy",
+    "path":"folders/GM Extension Assets/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

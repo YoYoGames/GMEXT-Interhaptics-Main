@@ -309,7 +309,7 @@
   "name":"fnt_gm_15",
   "parent":{
     "name":"Font",
-    "path":"folders/GM Extensions Assets/Font.yy",
+    "path":"folders/GM Extension Assets/Font.yy",
   },
   "pointRounding":0,
   "ranges":[

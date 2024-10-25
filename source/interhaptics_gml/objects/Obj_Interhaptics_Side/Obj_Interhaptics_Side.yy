@@ -1,19 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"Obj_Interhaptics_Side",
+  "%Name":"obj_interhaptics_side",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"Obj_Interhaptics_Side",
+  "name":"obj_interhaptics_side",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
     "path":"folders/Interhaptics Demo/Objects.yy",
   },
   "parentObjectId":{
-    "name":"Obj_Interhaptics_Option_Parent",
-    "path":"objects/Obj_Interhaptics_Option_Parent/Obj_Interhaptics_Option_Parent.yy",
+    "name":"obj_interhaptics_option_parent",
+    "path":"objects/obj_interhaptics_option_parent/obj_interhaptics_option_parent.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

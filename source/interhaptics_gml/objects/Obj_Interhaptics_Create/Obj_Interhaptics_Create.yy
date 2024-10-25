@@ -1,12 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"Obj_Interhaptics_Create",
+  "%Name":"obj_interhaptics_create",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"Obj_Interhaptics_Create",
+  "name":"obj_interhaptics_create",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",

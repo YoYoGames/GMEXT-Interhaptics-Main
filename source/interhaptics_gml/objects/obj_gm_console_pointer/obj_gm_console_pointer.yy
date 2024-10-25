@@ -1,17 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"Obj_Console_Pointer",
+  "%Name":"obj_gm_console_pointer",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"Obj_Console_Pointer",
+  "name":"obj_gm_console_pointer",
   "overriddenProperties":[],
   "parent":{
-    "name":"Console Pointer",
-    "path":"folders/Interhaptics Demo/Console Pointer.yy",
+    "name":"Objects",
+    "path":"folders/GM Extension Assets/Objects.yy",
   },
   "parentObjectId":null,
   "persistent":true,
@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Spr_Console_Pointer",
-    "path":"sprites/Spr_Console_Pointer/Spr_Console_Pointer.yy",
+    "name":"spr_gm_console_pointer",
+    "path":"sprites/spr_gm_console_pointer/spr_gm_console_pointer.yy",
   },
   "spriteMaskId":null,
   "visible":true,

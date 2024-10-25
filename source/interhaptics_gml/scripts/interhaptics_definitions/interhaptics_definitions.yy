@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"InterhapticsFunctions",
+  "%Name":"interhaptics_definitions",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"InterhapticsFunctions",
+  "name":"interhaptics_definitions",
   "parent":{
     "name":"Interhaptics",
     "path":"folders/Interhaptics.yy",

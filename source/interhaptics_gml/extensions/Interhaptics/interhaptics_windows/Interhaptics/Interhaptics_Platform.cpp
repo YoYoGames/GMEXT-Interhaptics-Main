@@ -5,7 +5,7 @@ std::vector<const char*> GetProviderFilenames() {
 	return {
 	"Interhaptics.GameInputProvider.dll",	// GameInput
 	"Interhaptics.RazerProvider.dll",		// Sensa
-	nullptr									// DualSense
+	"Interhaptics.DualSensePCProvider.dll"	// DualSense
 	};
 }
 

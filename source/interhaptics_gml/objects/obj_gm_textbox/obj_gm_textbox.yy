@@ -9,7 +9,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
-    "path":"folders/GM Extensions Assets/Objects.yy",
+    "path":"folders/GM Extension Assets/Objects.yy",
   },
   "parentObjectId":{
     "name":"obj_gm_text",

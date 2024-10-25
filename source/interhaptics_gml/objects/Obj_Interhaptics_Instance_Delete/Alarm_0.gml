@@ -4,7 +4,7 @@ instance_destroy(owner)
 
 var _id = owner
 
-with(Obj_Interhaptics_Create)
+with(obj_interhaptics_create)
 {
 	show_debug_message(array)
 	for(var a = 0 ; a < array_length(array) ; a++)

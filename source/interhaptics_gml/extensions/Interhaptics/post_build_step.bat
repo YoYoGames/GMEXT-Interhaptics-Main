@@ -40,11 +40,6 @@ call %Utils% optionGetValue "ps4SdkPath" PS4_SDK_PATH
 call %Utils% optionGetValue "ps5SdkPath" PS5_SDK_PATH
 call %Utils% optionGetValue "switchSdkPath" SWITCH_SDK_PATH
 
-:: Enable Studio? 
-call %Utils% optionGetValue "enableStudio" ENABLE_STUDIO
-set "ENABLE_STUDIO_FLAG=1"
-if "%ENABLE_STUDIO%"=="True" set "ENABLE_STUDIO_FLAG=1"
-
 :: Error String
 set "ERROR_SDK_HASH=Invalid FMOD SDK version, sha256 hash mismatch (expected v%SDK_VERSION%)."
 
@@ -71,14 +66,29 @@ exit 0
     set SDK_ENGINE="%SDK_PATH%\bin\HapticEngine\x64\HAR.dll"
     set SDK_GAMEINPUT_PROVIDER="%SDK_PATH%\bin\HapticProviders\GameInput\Interhaptics.GameInputProvider.dll"
     set SDK_SENSA_PROVIDER="%SDK_PATH%\bin\HapticProviders\Sensa\x64\Interhaptics.RazerProvider.dll"
-
+    
     :: Asset hash match
     :: call %Utils% assertFileHashEquals %SDK_CORE_SOURCE% %WIN_SDK_HASH% "%ERROR_SDK_HASH%"
 
     echo "Copying Windows (64 bit) dependencies"
+
+    :: Base
     if not exist "HAR.dll" call %Utils% itemCopyTo %SDK_ENGINE% "HAR.dll"
     if not exist "Interhaptics.GameInputProvider.dll" call %Utils% itemCopyTo %SDK_GAMEINPUT_PROVIDER% "Interhaptics.GameInputProvider.dll"
     if not exist "Interhaptics.RazerProvider.dll" call %Utils% itemCopyTo %SDK_SENSA_PROVIDER% "Interhaptics.RazerProvider.dll"
+
+    setlocal enabledelayedexpansion
+
+    :: Dual Sense
+    call %Utils% optionGetValue "winProviderDualSensePath" WIN_PROVIDER_PATH
+    if not "%WIN_PROVIDER_PATH%" == "" (
+        call %Utils% pathResolveExisting "%YYprojectDir%" "%WIN_PROVIDER_PATH%" WIN_PROVIDER_PATH
+        if not exist "Interhaptics.DualSensePCProvider.dll" call %Utils% itemCopyTo "!WIN_PROVIDER_PATH!\Interhaptics.DualSensePCProvider.dll" "Interhaptics.DualSensePCProvider.dll"
+        if not exist "libScePad.dll" call %Utils% itemCopyTo "!WIN_PROVIDER_PATH!\libScePad.dll" "libScePad.dll"
+        if not exist "portaudio_x64.dll" call %Utils% itemCopyTo "!WIN_PROVIDER_PATH!\portaudio_x64.dll" "portaudio_x64.dll"
+    )
+
+    endlocal
 
 exit /b 0
 
