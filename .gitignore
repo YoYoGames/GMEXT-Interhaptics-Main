@@ -47,3 +47,7 @@ xcuserdata/
 
 # Packages output folder
 output/
+
+source/interhaptics_gml/extensions/Interhaptics/scriptUtils.bat.bak
+
+source/interhaptics_gml/extensions/Interhaptics/scriptUtils.sh.bak
