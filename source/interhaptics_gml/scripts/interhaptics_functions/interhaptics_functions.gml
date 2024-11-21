@@ -26,7 +26,11 @@ function interhaptics_remove_target_from_event(material_id, target_array)
 	interhaptics_remove_target_from_event_multiplatform(material_id, _args_buffer_address)
 }
 
-
+/// @desc This function updates the spatial positions for a specific source target.
+/// @param {Real} material_id The ID of the source, which is the same as the attached haptic effect.
+/// @param {Array<Real>} target_array A vector of Interhaptics_CommandData to build a target. A target contains a group of body parts, lateral flags, and exclusion flags. Only perfectly matching targets will be updated.
+/// @param {Real} texture_position The new texture position.
+/// @param {Real} stiffness_position The new stiffness position.
 function interhaptics_update_event_positions(material_id, target_array, texture_position, stiffness_position)
 {
 	var _args = [
@@ -37,6 +41,7 @@ function interhaptics_update_event_positions(material_id, target_array, texture_
 	interhaptics_update_event_positions_multiplatform(material_id, _args_buffer_address, texture_position, stiffness_position)
 }
 
+/// @desc This function creates a haptic effect by processing parameters such as amplitude, pitch, and transients. This function generates a haptic effect based on the given input parameters and can optionally loop it.
 /// @param {Array<Real>} amplitude_array An array of amplitude values. Should be formatted as Time - Value pairs. Value is between 0 and 1.
 /// @param {Array<Real>} pitch_array An array of pitch values. Should be formatted as Time - Value pairs. Value is between 0 and 1.
 /// @param {Real} pitch_min The minimum value for the frequency range.
