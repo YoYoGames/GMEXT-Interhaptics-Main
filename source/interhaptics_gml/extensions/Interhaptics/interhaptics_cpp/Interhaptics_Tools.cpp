@@ -47,14 +47,16 @@ std::vector<CommandData> VectorToCommandDataArray(const std::vector<const uint8_
 	return vec;
 }
 
-void VectorToDoubleArray(const std::vector<const uint8_t*>& vector, double* out)
+void VectorToDoubleArray(const std::vector<const uint8_t*>& vector, std::vector<double>& out)
 {
-	for (int i = 0; i < vector.size(); i++)
-		out[i] = YYGetReal(vector[i]);;
+	for (int i = 0; i < vector.size(); i++) {
+		out[i] = YYGetReal(vector[i]);
+	}
 }
 
-void VectorToIntArray(const std::vector<const uint8_t*>& vector, int* out)
+void VectorToIntArray(const std::vector<const uint8_t*>& vector, std::vector<int>& out)
 {
-	for (int i = 0; i < vector.size(); i++)
-		out[i] = (int)YYGetReal(vector[i]);;
+	for (int i = 0; i < vector.size(); i++) {
+		out[i] = (int)YYGetReal(vector[i]);
+	}
 }

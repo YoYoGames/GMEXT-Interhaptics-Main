@@ -62,14 +62,18 @@ function interhaptics_add_parametric_effect(amplitude_array, pitch_array, pitch_
 	interhaptics_add_parametric_effect_multiplatform(_args_buffer_address)
 }
 
+/// @desc Return true if at least one active event targeting the given bodyparts contains transients
+/// @param {Real} perception perception to play.
+/// @param {Array<Real>} body_parts Ids of bodyparts targeted.
+/// @returns {Bool}
 function interhaptics_transients_played_on_those_body_parts(perception, body_parts)
 {
 	var _args = [
-		[ body_parts, undefined ], // struct
+		[ body_parts, buffer_s32 ], // array<int>
 	]
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	interhaptics_transients_played_on_those_body_parts_multiplatform(perception,_args_buffer_address)
+	return interhaptics_transients_played_on_those_body_parts_multiplatform(perception,_args_buffer_address)
 }
 
 /// @desc This function sets the haptics intensity factor for a specific target of a source.

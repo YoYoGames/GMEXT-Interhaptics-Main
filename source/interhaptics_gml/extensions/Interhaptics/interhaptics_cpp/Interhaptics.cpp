@@ -227,28 +227,23 @@ func double interhaptics_add_parametric_effect_multiplatform(char* buff_args)
 	auto args = buffer_unpack((uint8_t*)buff_args);
 
 	auto vect = YYGetArray(args[0]);
-	double* amplitude = (double*)malloc(vect.size() * sizeof(double));
+	std::vector<double> amplitude(vect.size());
 	VectorToDoubleArray(vect, amplitude);
 
-	size_t amplitudeSize = vect.size();
-
 	vect = YYGetArray(args[1]);
-	double* pitch = (double*)malloc(vect.size() * sizeof(double));
+	std::vector<double> pitch(vect.size());
 	VectorToDoubleArray(vect, pitch);
-
-	size_t pitchSize = vect.size();
 
 	double pitchMin = YYGetReal(args[2]);
 	double pitchMax = YYGetReal(args[3]);
 
 	vect = YYGetArray(args[4]);
-	double* transient = (double*)malloc(vect.size() * sizeof(double));
+	std::vector<double> transient(vect.size());
 	VectorToDoubleArray(vect, transient);
-	size_t transientSize = vect.size();
 
-	bool isLooping = YYGetReal(args[5])>0.5;
+	bool isLooping = YYGetReal(args[5]) > 0.5;
 
-	AddParametricEffect(amplitude, (int)amplitudeSize, pitch, (int)pitchSize, pitchMin, pitchMax, transient, (int)transientSize, isLooping);
+	AddParametricEffect(amplitude.data(), (int)amplitude.size(), pitch.data(), (int)pitch.size(), pitchMin, pitchMax, transient.data(), (int)transient.size(), isLooping);
 
 	return 0;
 }
@@ -264,19 +259,18 @@ func double interhaptics_delete_hm(double material_ref)
 	return 0;
 }
 
-func double interhaptics_transients_played_on_those_body_parts_multiplatform(double perception,char* buff_args)
+func double interhaptics_transients_played_on_those_body_parts_multiplatform(double perception, char* buff_args)
 {
 	if (!g_isInitialised) return -1;
 
 	auto args = buffer_unpack((uint8_t*)buff_args);
 
 	auto vect = YYGetArray(args[0]);
-	int* _bodyparts = (int*)malloc(vect.size() * sizeof(int));
-	VectorToIntArray(vect, _bodyparts);
+	std::vector<int> bodyparts(vect.size());
 
-	size_t _numberOfBodyparts = vect.size();
+	VectorToIntArray(vect, bodyparts);
 
-	return TransientsPlayedOnThoseBodyparts((int)perception, _bodyparts, (int)_numberOfBodyparts)?1.0:0.0;
+	return TransientsPlayedOnThoseBodyparts((int)perception, bodyparts.data(), (int)vect.size()) ? 1.0 : 0.0;
 }
 
 func double interhaptics_stop_all_events()

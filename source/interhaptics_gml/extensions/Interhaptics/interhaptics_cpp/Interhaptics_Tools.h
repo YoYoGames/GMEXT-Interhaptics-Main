@@ -60,5 +60,5 @@ uint64_t packIndexIntoRef(uint32_t index, uint8_t type);
 
 CommandData MapToCommandData(const std::map<std::string, const uint8_t*>& map);
 std::vector<CommandData> VectorToCommandDataArray(const std::vector<const uint8_t*>& vector);
-void VectorToDoubleArray(const std::vector<const uint8_t*>& vector, double* out);
-void VectorToIntArray(const std::vector<const uint8_t*>& vector, int* out);
+void VectorToDoubleArray(const std::vector<const uint8_t*>& vector, std::vector<double>& out);
+void VectorToIntArray(const std::vector<const uint8_t*>& vector, std::vector<int>& out);
