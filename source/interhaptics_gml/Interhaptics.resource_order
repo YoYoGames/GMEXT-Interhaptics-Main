@@ -1,12 +1,11 @@
 {
   "FolderOrderSettings":[
-    {"name":"GM Extension Assets","order":2,"path":"folders/GM Extension Assets.yy",},
-    {"name":"Font","order":1,"path":"folders/GM Extension Assets/Font.yy",},
-    {"name":"Objects","order":2,"path":"folders/GM Extension Assets/Objects.yy",},
-    {"name":"Sprites","order":3,"path":"folders/GM Extension Assets/Sprites.yy",},
-    {"name":"Interhaptics Demo","order":6,"path":"folders/Interhaptics Demo.yy",},
-    {"name":"Sprites","order":3,"path":"folders/Interhaptics Demo/Sprites.yy",},
+    {"name":"GM Extension Assets","order":70,"path":"folders/GM Extension Assets.yy",},
+    {"name":"Objects","order":1,"path":"folders/GM Extension Assets/Objects.yy",},
+    {"name":"Sprites","order":2,"path":"folders/GM Extension Assets/Sprites.yy",},
+    {"name":"Interhaptics Demo","order":71,"path":"folders/Interhaptics Demo.yy",},
     {"name":"Rooms","order":1,"path":"folders/Interhaptics Demo/Rooms.yy",},
+    {"name":"Sprites","order":3,"path":"folders/Interhaptics Demo/Sprites.yy",},
   ],
   "ResourceOrderSettings":[
     {"name":"Interhaptics","order":2,"path":"extensions/Interhaptics/Interhaptics.yy",},
