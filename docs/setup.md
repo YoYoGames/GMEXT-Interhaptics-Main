@@ -23,8 +23,12 @@ After extracting the SDK contents to the folder, the folder's contents should lo
 
 Download the [latest release](https://www.github.com/YoYoGames/GMEXT-Interhaptics-Main/releases/latest) of the extension.
 
-In GameMaker, open an existing project or create a new one. Next add the extension to the project.
+In GameMaker, open an existing project or create a new one. Next add the extension to the project and configure paths in the [Extension Options](https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Extensions.htm#extension_options):
 
-In the [Extension Options](https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Extensions.htm#extension_options), set the Windows SDK to the correct relative folder path: `../interhaptics_sdk/interhaptics_windows`.
+![Extension Options](assets/extension_options.png)
 
-![Windows SDK location](assets/extension_options_windows_sdk.png)
+The Windows SDK should be set to the correct relative folder path: `../interhaptics_sdk/interhaptics_windows`.
+
+If you have access to the DualSense provider, you can set the path under **DualSense Provider**. This pust must be set to the directory that contains the DLL files.
+
+If you are developing for PS5, the **PS5 Interhaptics SDK** should be set to the path where you installed the SDK. The **PS5 Interhaptics VS** should be set to the directory that contains the Visual Studio solution (`*.sln`) file.

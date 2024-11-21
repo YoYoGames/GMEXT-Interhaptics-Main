@@ -258,8 +258,19 @@ function interhaptics_set_target_intensity(material_ref, target, intensity) {}
 
 /**
  * @func interhaptics_providers_init
- * @desc This function handles the initialisation process of the specific device's COM, its haptic settings for rendering and subscription to the Interhaptics Engine. It returns `false` if the initialisation process fails.
- * @returns {boolean}
+ * @desc This function handles the initialisation process of the specific device's COM, its haptic settings for rendering and subscription to the Interhaptics Engine. It returns a bitmask with bits set or unset for every provider in ${constant.INTERHAPTICS_PROVIDER}, depending on whether it was initialised or not.
+ * 
+ * To check if a specific provider is initialised: 
+ * 
+ * ```gml
+ * var _init_mask = interhaptics_providers_init();
+ * if ((_init_mask & INTERHAPTICS_PROVIDER.SENSA) != 0)
+ * {
+ *     // Sensa has been initialised
+ * }
+ * ```
+ * 
+ * @returns {real}
  * @func_end
  */
 function interhaptics_providers_init() {}
@@ -267,10 +278,10 @@ function interhaptics_providers_init() {}
 
 /**
  * @func interhaptics_providers_available
- * @desc This function checks the availability of the device before triggering haptic playback. It returns `true` if the provider is present, `false` if not.
+ * @desc This function checks the availability of the device before triggering haptic playback. It returns a bitmask with bits set or unset for every provider in ${constant.INTERHAPTICS_PROVIDER}, depending on whether it is available or not.
  * 
  * This optional step can help improve performance.
- * @returns {boolean}
+ * @returns {real}
  * @func_end
  */
 function interhaptics_providers_available() {}
@@ -278,8 +289,8 @@ function interhaptics_providers_available() {}
 
 /**
  * @func interhaptics_providers_clean
- * @desc This function is responsible for de-initialising the device's COM, if necessary, and for unsubscribing the provider from the Interhaptics Engine. It returns `false` if the de-initialisation process fails.
- * @returns {boolean}
+ * @desc This function is responsible for de-initialising the device's COM, if necessary, and for unsubscribing the provider from the Interhaptics Engine. It returns a bitmask with bits set or unset for every provider in ${constant.INTERHAPTICS_PROVIDER}, depending on whether de-initialisation succeeded for the provider or not.
+ * @returns {real}
  * @func_end
  */
 function interhaptics_providers_clean() {}
@@ -287,7 +298,7 @@ function interhaptics_providers_clean() {}
 
 /**
  * @func interhaptics_providers_render_haptics
- * @desc API triggers the rendering process for the provider by retrieving the necessary haptic buffers, transcoding them if required, and playing them back on the associated device. This API must be called for all targeted devices.
+ * @desc This function triggers the rendering process for all initialised providers by retrieving the necessary haptic buffers, transcoding them if required, and playing them back on the associated device.
  * It is mandatory to call ${function.interhaptics_compute_all_events} from the Interhaptics Engine before calling ${function.interhaptics_providers_render_haptics} for synchronized haptic rendering. Typically, both APIs are implemented in the same loop, with ${function.interhaptics_compute_all_events} called before the ${function.interhaptics_providers_render_haptics} calls.
  * @func_end
  */
@@ -367,6 +378,18 @@ function interhaptics_providers_render_haptics() {}
  * @member THIRD Represents the third segment group. ID 602
  * @const_end
  */
+
+ /**
+  * @const INTERHAPTICS_PROVIDER
+  * @desc > **Interhaptics Constant** N / A
+  * 
+  * <br />
+  * This enum represents the possible haptics providers.
+  * @member GAME_INPUT Game input provider
+  * @member SENSA Sensa provider
+  * @member DUAL_SENSE DualSense provider
+  * @const_end
+  */
  
  /**
  * @struct Interhaptics_CommandData
@@ -390,7 +413,7 @@ function interhaptics_providers_render_haptics() {}
   * 
   * To create your own haptic effects for use with Interhaptics you can use the [Haptic Composer](https://www.interhaptics.com/doc/haptic-composer) tool, which includes an [Audio to Haptic](https://www.interhaptics.com/doc/haptic-composer/#audio-to-haptics-settings) feature to generate a haptic effect from audio.
   * 
-  * [[Note: This extension is only supported on Windows.]]
+  * [[Note: This extension is only supported on Windows and PS5.]]
   * 
   * @section Guides
   * @desc These are the guides for the Interhaptics extension: 
@@ -427,7 +450,7 @@ function interhaptics_providers_render_haptics() {}
   * @ref interhaptics_add_parametric_effect
   * @ref interhaptics_delete_hm
   * @ref interhaptics_update_hm
-  * @ref interhaptics_transients_played_on_those_bodyparts
+  * @ref interhaptics_transients_played_on_those_body_parts
   * @section_end
   * 
   * @module_end
@@ -498,6 +521,7 @@ function interhaptics_providers_render_haptics() {}
  * @ref INTERHAPTICS_OPERATOR
  * @ref INTERHAPTICS_LATERAL_FLAG
  * @ref INTERHAPTICS_GROUP_ID
+ * @ref INTERHAPTICS_PROVIDER
  * @section_end
  *
  * @section_struct Structs

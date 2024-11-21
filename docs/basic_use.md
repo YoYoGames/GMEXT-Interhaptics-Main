@@ -8,19 +8,27 @@ This page covers the basic use of the Interhaptics extension.
 
 The first thing to do is initialising the extension using ${func.interhaptics_init}.
 
-After that, you should check for the presence of a "provider", which is an attached device (e.g. a controller) that is capable of providing haptics feedback. To initialise the provider, call ${func.interhaptics_providers_init}. To check if a provider is present, call ${func.interhaptics_providers_available}.
+After that, you should check for the presence of a "provider", which is an attached device (e.g. a controller) that is capable of providing haptics feedback. To retrieve the providers that are available, call ${func.interhaptics_providers_available}. To initialise all available providers, call ${func.interhaptics_providers_init}.
 
 ```gml
 /// Create Event
-interhaptics_init();
-interhaptics_providers_init();
+available_providers = interhaptics_providers_available();
+initialised_providers = interhaptics_providers_init();
+```
+
+Note that the above functions return a bitmask with the result for every provider. You can check a single provider as follows:
+
+```gml
+if ((initialised_providers & INTERHAPTICS_PROVIDER.DUAL_SENSE) != 0) {
+	// DualSense provider has been initialised
+}
 ```
 
 ## Loading .haps Files
 
 Haptics effects are stored in `.haps` files, which use a custom file format used by Interhaptics.
 
-You can add a haptics effect stored in a `.haps` file using ${func.interhaptics_add_hm}: 
+You can add a haptics effect stored in a `.haps` file using ${func.interhaptics_add_hm}:
 
 ```gml
 var _file = file_text_open_read("HapticMaterials/Body Hit.haps")
