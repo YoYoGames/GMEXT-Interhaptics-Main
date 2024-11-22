@@ -1,4 +1,6 @@
 
+// feather ignore GM1041
+
 /// @desc This function adds a target within the range of the source. The Interhaptics Engine will remap device endpoints and in-range targets to the device management layer for haptic playback.
 /// @param {Real} material_id The ID of the source to add a target to, which is the same as the attached haptic effect.
 /// @param {Array} target_array A target contains a group of body parts, lateral flags, and exclusion flags.
@@ -73,7 +75,7 @@ function interhaptics_transients_played_on_those_body_parts(perception, body_par
 	]
 	var _args_buffer_address = ext_pack_args(_args);
 	
-	return interhaptics_transients_played_on_those_body_parts_multiplatform(perception,_args_buffer_address)
+	return bool(interhaptics_transients_played_on_those_body_parts_multiplatform(perception,_args_buffer_address));
 }
 
 /// @desc This function sets the haptics intensity factor for a specific target of a source.

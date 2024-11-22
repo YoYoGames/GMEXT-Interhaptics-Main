@@ -1,3 +1,4 @@
 
-if(owner.index > 0)
+if(owner.index > 0) {
 	owner.index --
+}

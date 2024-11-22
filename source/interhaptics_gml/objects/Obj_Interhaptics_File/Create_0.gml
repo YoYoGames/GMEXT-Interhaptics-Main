@@ -3,18 +3,18 @@ event_inherited()
 
 array = []
 
-var file_name = file_find_first(working_directory + "/HapticMaterials/*.haps", 0);
-if(file_name != "")
-	array_push(array, string_delete(file_name,string_length(file_name)-4,5));
+var _filename = file_find_first(working_directory + "/HapticMaterials/*.haps", fa_none);
+if(_filename != "") {
+	array_push(array, string_delete(_filename,string_length(_filename)-4,5));
+}
 
-while(true)
-{
-	file_name = file_find_next();
+while(true) {
+	_filename = file_find_next();
 	
-	if(file_name == "")
+	if(_filename == "")
 		break
 	
-    array_push(array, string_delete(file_name,string_length(file_name)-4,5));
+    array_push(array, string_delete(_filename,string_length(_filename)-4,5));
 }
 
 file_find_close();

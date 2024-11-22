@@ -8,9 +8,14 @@
 
 #macro EXT_BUFFER_RETURN_SIZE (2048)
 
+/// @param {Id.Buffer} _buff
+/// @param {Bool} _as_map
 /// @returns {Any}
 function ext_buffer_unpack(_buff, _as_map = false)
 {
+	// Decode any common value as <<type><data>> where type is an uint8
+	// and data will depend on the type being parsed.
+	
 	var _type = buffer_read(_buff, buffer_u8);
 	
 	switch(_type)
@@ -69,6 +74,9 @@ function ext_buffer_unpack(_buff, _as_map = false)
 	}
 }
 
+/// @param {Id.Buffer} _buffer
+/// @param {Any} _value
+/// @param {Constant.BufferDataType} _type
 function ext_buffer_pack(_buffer, _value, _type = undefined)
 {
 	// Encode any value as <<type><data>>
@@ -111,6 +119,7 @@ function ext_buffer_pack(_buffer, _value, _type = undefined)
 	// Forced type cast (used for typed arrays|structs and buffers)
 	else if (!is_undefined(_type))
 	{
+		// feather ignore GM1044
 		buffer_write(_buffer, buffer_u8, _type);
 	
 		// Encode buffer as <<type><size><address>>
@@ -175,6 +184,7 @@ function ext_buffer_pack(_buffer, _value, _type = undefined)
 	}
 }
 
+/// @param {Array<Any>} _args
 /// @returns {Pointer}
 function ext_pack_args(_args) {
 	
