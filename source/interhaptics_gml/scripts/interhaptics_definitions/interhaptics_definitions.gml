@@ -59,14 +59,3 @@ enum INTERHAPTICS_PROVIDER
 	SENSA = 2,
 	DUAL_SENSE = 4,
 }
-
-_available_providers = interhaptics_providers_available();
-_initialized = interhaptics_providers_init();
-
-if (_available_providers != _initialized) {
-	
-}
-
-if ((_available_providers & INTERHAPTICS_PROVIDER.DUAL_SENSE) != 0) {
-	
-}
