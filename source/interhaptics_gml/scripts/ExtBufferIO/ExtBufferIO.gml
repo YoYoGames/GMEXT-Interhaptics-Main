@@ -11,6 +11,7 @@
 /// @param {Id.Buffer} _buff
 /// @param {Bool} _as_map
 /// @returns {Any}
+/// @ignore
 function ext_buffer_unpack(_buff, _as_map = false)
 {
 	// Decode any common value as <<type><data>> where type is an uint8
@@ -77,6 +78,7 @@ function ext_buffer_unpack(_buff, _as_map = false)
 /// @param {Id.Buffer} _buffer
 /// @param {Any} _value
 /// @param {Constant.BufferDataType} _type
+/// @ignore
 function ext_buffer_pack(_buffer, _value, _type = undefined)
 {
 	// Encode any value as <<type><data>>
@@ -186,6 +188,7 @@ function ext_buffer_pack(_buffer, _value, _type = undefined)
 
 /// @param {Array<Any>} _args
 /// @returns {Pointer}
+/// @ignore
 function ext_pack_args(_args) {
 	
 	static _ext_args_buffer = buffer_create(1, buffer_grow, 1);
@@ -202,6 +205,7 @@ function ext_pack_args(_args) {
 }
 
 /// @returns {Id.Buffer}
+/// @ignore
 function ext_return_buffer() {
 	static _return_buffer = buffer_create(EXT_BUFFER_RETURN_SIZE, buffer_fixed, 1);
 	buffer_seek(_return_buffer, buffer_seek_start, 0);
@@ -209,6 +213,7 @@ function ext_return_buffer() {
 }
 
 /// @returns {Pointer}
+/// @ignore
 function ext_return_buffer_address() {
 	var _buffer = ext_return_buffer();
 	buffer_poke(_buffer, 0, buffer_u8, BUFFER_UNDEFINED);
