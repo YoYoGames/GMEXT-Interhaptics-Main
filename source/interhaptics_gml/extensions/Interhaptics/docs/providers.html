@@ -112,7 +112,13 @@
 <p align="right"><a href="#top">Back To Top</a></p>
 
 <h1 id="interhaptics_providers_init">interhaptics_providers_init</h1>
-<p>This function handles the initialisation process of the specific device's COM, its haptic settings for rendering and subscription to the Interhaptics Engine. It returns <code>false</code> if the initialisation process fails.</p>
+<p>This function handles the initialisation process of the specific device's COM, its haptic settings for rendering and subscription to the Interhaptics Engine. It returns a bitmask with bits set or unset for every provider in <a href="shared_types.html#interhaptics_provider">INTERHAPTICS_PROVIDER</a>, depending on whether it was initialised or not.</p>
+<p>To check if a specific provider is initialised:</p>
+<pre class="highlight"><code class="language-gml">var _init_mask = interhaptics_providers_init();
+if ((_init_mask &amp; INTERHAPTICS_PROVIDER.SENSA) != 0)
+{
+    // Sensa has been initialised
+}</code></pre>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
@@ -123,7 +129,7 @@
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
 </blockquote>
 <p><br></p>
 <p><br></p>
@@ -131,7 +137,7 @@
 <p align="right"><a href="#top">Back To Top</a></p>
 
 <h1 id="interhaptics_providers_available">interhaptics_providers_available</h1>
-<p>This function checks the availability of the device before triggering haptic playback. It returns <code>true</code> if the provider is present, <code>false</code> if not.</p>
+<p>This function checks the availability of the device before triggering haptic playback. It returns a bitmask with bits set or unset for every provider in <a href="shared_types.html#interhaptics_provider">INTERHAPTICS_PROVIDER</a>, depending on whether it is available or not.</p>
 <p>This optional step can help improve performance.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
@@ -143,7 +149,7 @@
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
 </blockquote>
 <p><br></p>
 <p><br></p>
@@ -151,7 +157,7 @@
 <p align="right"><a href="#top">Back To Top</a></p>
 
 <h1 id="interhaptics_providers_clean">interhaptics_providers_clean</h1>
-<p>This function is responsible for de-initialising the device's COM, if necessary, and for unsubscribing the provider from the Interhaptics Engine. It returns <code>false</code> if the de-initialisation process fails.</p>
+<p>This function is responsible for de-initialising the device's COM, if necessary, and for unsubscribing the provider from the Interhaptics Engine. It returns a bitmask with bits set or unset for every provider in <a href="shared_types.html#interhaptics_provider">INTERHAPTICS_PROVIDER</a>, depending on whether de-initialisation succeeded for the provider or not.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
@@ -162,7 +168,7 @@
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
 </blockquote>
 <p><br></p>
 <p><br></p>
@@ -170,7 +176,7 @@
 <p align="right"><a href="#top">Back To Top</a></p>
 
 <h1 id="interhaptics_providers_render_haptics">interhaptics_providers_render_haptics</h1>
-<p>API triggers the rendering process for the provider by retrieving the necessary haptic buffers, transcoding them if required, and playing them back on the associated device. This API must be called for all targeted devices.
+<p>This function triggers the rendering process for all initialised providers by retrieving the necessary haptic buffers, transcoding them if required, and playing them back on the associated device.
 It is mandatory to call <a href="engine_events.html#interhaptics_compute_all_events">interhaptics_compute_all_events</a> from the Interhaptics Engine before calling <a href="providers.html#interhaptics_providers_render_haptics">interhaptics_providers_render_haptics</a> for synchronized haptic rendering. Typically, both APIs are implemented in the same loop, with <a href="engine_events.html#interhaptics_compute_all_events">interhaptics_compute_all_events</a> called before the <a href="providers.html#interhaptics_providers_render_haptics">interhaptics_providers_render_haptics</a> calls.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>

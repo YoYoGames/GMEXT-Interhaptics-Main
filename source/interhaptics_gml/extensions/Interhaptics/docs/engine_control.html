@@ -110,6 +110,7 @@
 <li><a href="engine_control.html#interhaptics_add_parametric_effect">interhaptics_add_parametric_effect</a></li>
 <li><a href="engine_control.html#interhaptics_delete_hm">interhaptics_delete_hm</a></li>
 <li><a href="engine_control.html#interhaptics_update_hm">interhaptics_update_hm</a></li>
+<li><a href="engine_control.html#interhaptics_transients_played_on_those_body_parts">interhaptics_transients_played_on_those_body_parts</a></li>
 </ul>
 <p><br></p>
 <hr />
@@ -369,6 +370,46 @@ This can be useful when the ID of the haptic effect needs to be persistent.</p>
 <td>content</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>The JSON content of the .haps file to be loaded. This needs to follow the Interhaptics .haps format.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="interhaptics_transients_played_on_those_body_parts">interhaptics_transients_played_on_those_body_parts</h1>
+<p>This function returns true if at least one active event targeting the given body parts contains transients.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">interhaptics_transients_played_on_those_body_parts(perception, body_parts)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>perception</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The perception to play</td>
+</tr>
+<tr>
+<td>body_parts</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The IDs of the body parts targeted</td>
 </tr>
 </tbody>
 </table>

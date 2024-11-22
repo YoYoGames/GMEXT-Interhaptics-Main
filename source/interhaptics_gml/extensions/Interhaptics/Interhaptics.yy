@@ -14,7 +14,7 @@
   "copyToTargets":576460752303423552,
   "description":"",
   "exportToGame":true,
-  "extensionVersion":"0.0.1",
+  "extensionVersion":"1.0.0",
   "files":[
     {"$GMExtensionFile":"","%Name":"","constants":[],"copyToTargets":576460752303423552,"filename":"Interhaptics.ext","final":"","functions":[
         {"$GMExtensionFunction":"","%Name":"interhaptics_init","argCount":0,"args":[],"documentation":"/// @desc This function initialises the different components and modules of the Interhaptics Engine.","externalName":"interhaptics_init","help":"interhaptics_init()","hidden":false,"kind":1,"name":"interhaptics_init","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},

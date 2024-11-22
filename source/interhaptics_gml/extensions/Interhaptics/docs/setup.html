@@ -115,9 +115,11 @@
 <p><img alt="Windows SDK location on disk" src="assets/sdk_location_explorer.png" /></p>
 <h2 id="setting-up-gamemaker">Setting Up GameMaker</h2>
 <p>Download the <a href="https://www.github.com/YoYoGames/GMEXT-Interhaptics-Main/releases/latest">latest release</a> of the extension.</p>
-<p>In GameMaker, open an existing project or create a new one. Next add the extension to the project.</p>
-<p>In the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Extensions.htm#extension_options">Extension Options</a>, set the Windows SDK to the correct relative folder path: <code>../interhaptics_sdk/interhaptics_windows</code>.</p>
-<p><img alt="Windows SDK location" src="assets/extension_options_windows_sdk.png" /></p>
+<p>In GameMaker, open an existing project or create a new one. Next add the extension to the project and configure paths in the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Extensions.htm#extension_options">Extension Options</a>:</p>
+<p><img alt="Extension Options" src="assets/extension_options.png" /></p>
+<p>The Windows SDK should be set to the correct relative folder path: <code>../interhaptics_sdk/interhaptics_windows</code>.</p>
+<p>If you have access to the DualSense provider, you can set the path under <strong>DualSense Provider</strong>. This pust must be set to the directory that contains the DLL files.</p>
+<p>If you are developing for PS5, the <strong>PS5 Interhaptics SDK</strong> should be set to the path where you installed the SDK. The <strong>PS5 Interhaptics VS</strong> should be set to the directory that contains the Visual Studio solution (<code>*.sln</code>) file.</p>
               
             </div>
           </div><footer>
